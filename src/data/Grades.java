@@ -55,6 +55,14 @@ public class Grades extends Student{
     public void setNote4(float note4) {
         this.note4 = note4;
     }
+
+    public Grades(String subject, float note1, float note2, float note3, float note4) {
+        this.subject = subject;
+        this.note1 = note1;
+        this.note2 = note2;
+        this.note3 = note3;
+        this.note4 = note4;
+    }
     
     
     
