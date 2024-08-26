@@ -4,6 +4,7 @@
  */
 package frames;
 
+import data.Student;
 import forms.*;
 import java.awt.BorderLayout;
 
@@ -13,12 +14,25 @@ import java.awt.BorderLayout;
  */
 public class MainMenu extends javax.swing.JFrame {
 
+    
+    
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
         initComponents();
+        
+        
+        jpContentMain contentMain = new jpContentMain();
+        contentMain.setSize(760, 606);
+        contentMain.setLocation(0, 0);
+        
+        jpContent.removeAll();
+        jpContent.add(contentMain, BorderLayout.CENTER);
+        jpContent.revalidate();
+        jpContent.repaint();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,11 +105,11 @@ public class MainMenu extends javax.swing.JFrame {
             jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpLeftMenuLayout.createSequentialGroup()
                 .addGap(210, 210, 210)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addGap(303, 303, 303))
         );
 
@@ -160,24 +174,36 @@ public class MainMenu extends javax.swing.JFrame {
         jpHeader.setSize(760, 34);
         jpHeader.setLocation(0, 0);
         
+        jpContentMain contentMain = new jpContentMain();
+        contentMain.removeAll();
+        contentMain.add(jpHeader, BorderLayout.NORTH);
+        contentMain.add(mainMenu, BorderLayout.CENTER);
+        contentMain.revalidate();
+        contentMain.repaint();
+        
         jpContent.removeAll();
-        jpContent.add(jpHeader, BorderLayout.NORTH);
-        jpContent.add(mainMenu, BorderLayout.CENTER);
+        jpContent.add(contentMain, BorderLayout.CENTER);
         jpContent.revalidate();
         jpContent.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jpAlumnos alumnos = new jpAlumnos();
+        jpAlumnos alumnos = new jpAlumnos(this);
         alumnos.setSize(760, 606);
         alumnos.setLocation(0, 0);
         
         jpHeader.setSize(760, 34);
         jpHeader.setLocation(0, 0);
         
+        jpContentMain contentMain = new jpContentMain();
+        contentMain.removeAll();
+        contentMain.add(jpHeader, BorderLayout.NORTH);
+        contentMain.add(alumnos, BorderLayout.CENTER);
+        contentMain.revalidate();
+        contentMain.repaint();
+        
         jpContent.removeAll();
-        jpContent.add(jpHeader, BorderLayout.NORTH);
-        jpContent.add(alumnos, BorderLayout.CENTER);
+        jpContent.add(contentMain, BorderLayout.CENTER);
         jpContent.revalidate();
         jpContent.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -190,9 +216,15 @@ public class MainMenu extends javax.swing.JFrame {
         jpHeader.setSize(760, 34);
         jpHeader.setLocation(0, 0);
         
+        jpContentMain contentMain = new jpContentMain();
+        contentMain.removeAll();
+        contentMain.add(jpHeader, BorderLayout.NORTH);
+        contentMain.add(calificaiones, BorderLayout.CENTER);
+        contentMain.revalidate();
+        contentMain.repaint();
+        
         jpContent.removeAll();
-        jpContent.add(jpHeader, BorderLayout.NORTH);
-        jpContent.add(calificaiones, BorderLayout.CENTER);
+        jpContent.add(contentMain, BorderLayout.CENTER);
         jpContent.revalidate();
         jpContent.repaint();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -242,8 +274,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jpBarClose;
     private javax.swing.JPanel jpBg;
     private javax.swing.JPanel jpClose;
-    private javax.swing.JPanel jpContent;
-    private javax.swing.JPanel jpHeader;
+    public javax.swing.JPanel jpContent;
+    public javax.swing.JPanel jpHeader;
     private javax.swing.JPanel jpLeftMenu;
     private javax.swing.JPanel jpMax;
     private javax.swing.JPanel jpMin;
