@@ -19,7 +19,9 @@ public class jpInfoAlumno extends javax.swing.JPanel {
     public jpInfoAlumno(Student alumno) {
         initComponents();
         
-        jtxtInfo.setText(alumno.getName());
+        jTextNombre.setText(alumno.getName());
+        jTextApellido.setText(alumno.getLastName());
+        jTextEdad.setText(Integer.toString(alumno.getAge()));
         
     }
 
@@ -33,21 +35,53 @@ public class jpInfoAlumno extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtxtInfo = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jTextNombre = new javax.swing.JTextField();
+        jLNombre = new javax.swing.JLabel();
+        jLApellido = new javax.swing.JLabel();
+        jTextApellido = new javax.swing.JTextField();
+        jLEdad = new javax.swing.JLabel();
+        jTextEdad = new javax.swing.JTextField();
+        jLGenero = new javax.swing.JLabel();
+        jCBXGenero = new javax.swing.JComboBox<>();
 
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jtxtInfo.setColumns(20);
-        jtxtInfo.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jtxtInfo.setRows(5);
-        jScrollPane1.setViewportView(jtxtInfo);
-
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel2.setText("INFO");
+
+        jTextNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextNombreActionPerformed(evt);
+            }
+        });
+
+        jLNombre.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLNombre.setText("Nombre");
+
+        jLApellido.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLApellido.setText("Apellido");
+
+        jTextApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextApellidoActionPerformed(evt);
+            }
+        });
+
+        jLEdad.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLEdad.setText("Edad");
+
+        jLGenero.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLGenero.setText("Genero");
+
+        jCBXGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBXGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBXGeneroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -55,29 +89,85 @@ public class jpInfoAlumno extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(232, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLEdad)
+                        .addGap(85, 85, 85)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextNombre)
+                        .addGap(66, 66, 66))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(173, 173, 173)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                        .addGap(660, 660, 660))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCBXGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(174, 174, 174))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLNombre)
+                    .addComponent(jTextApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLApellido))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLEdad)
+                    .addComponent(jTextEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCBXGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextNombreActionPerformed
+
+    private void jTextApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextApellidoActionPerformed
+
+    private void jCBXGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBXGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBXGeneroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jCBXGenero;
+    private javax.swing.JLabel jLApellido;
+    private javax.swing.JLabel jLEdad;
+    private javax.swing.JLabel jLGenero;
+    private javax.swing.JLabel jLNombre;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jtxtInfo;
+    private javax.swing.JTextField jTextApellido;
+    private javax.swing.JTextField jTextEdad;
+    private javax.swing.JTextField jTextNombre;
     // End of variables declaration//GEN-END:variables
 }
