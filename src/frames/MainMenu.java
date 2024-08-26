@@ -54,21 +54,21 @@ public class MainMenu extends javax.swing.JFrame {
         jpLeftMenu.setMinimumSize(new java.awt.Dimension(200, 100));
         jpLeftMenu.setPreferredSize(new java.awt.Dimension(210, 484));
 
-        jButton1.setText("jButton1");
+        jButton1.setText("WELCOME");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("ALUMNOS");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("jButton3");
+        jButton3.setText("CALIFICACIONES");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
