@@ -8,13 +8,15 @@ package data;
  *
  * @author PC
  */
-public class Grades extends Student{
+public class Qualification extends Student{
     
-    public String subject;
-    public float note1;
-    public float note2;
-    public float note3;
-    public float note4;
+    private String subject;
+    private float note1;
+    private float note2;
+    private float note3;
+    private float note4;
+    private float average;
+    
 
     public String getSubject() {
         return subject;
@@ -56,7 +58,7 @@ public class Grades extends Student{
         this.note4 = note4;
     }
 
-    public Grades(String subject, float note1, float note2, float note3, float note4) {
+    public Qualification(String subject, float note1, float note2, float note3, float note4) {
         this.subject = subject;
         this.note1 = note1;
         this.note2 = note2;
