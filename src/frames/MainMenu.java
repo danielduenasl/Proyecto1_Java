@@ -4,6 +4,7 @@
  */
 package frames;
 
+import data.EventMenuSelected;
 import data.Student;
 import forms.*;
 import java.awt.BorderLayout;
@@ -12,6 +13,7 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import javax.swing.JComponent;
 
 /**
  *
@@ -19,7 +21,9 @@ import java.awt.RenderingHints;
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    
+    private jpMainMenu MainM;
+    private jpAlumnos alumnos;
+    private jpCalificaciones calif;
     
     /**
      * Creates new form MainMenu
@@ -28,25 +32,61 @@ public class MainMenu extends javax.swing.JFrame {
         initComponents();
         
         
+//        
+//        jpContentMain contentMain = new jpContentMain();
+//        contentMain.setSize(760, 606);
+//        contentMain.setLocation(0, 0);
+//        
+//        jpContent.removeAll();
+//        jpContent.add(contentMain, BorderLayout.CENTER);
+//        jpContent.revalidate();
+//        jpContent.repaint();
+//        
+//        jpMainMenu mainMenu = new jpMainMenu();
+//        mainMenu.setSize(760, 606);
+//        mainMenu.setLocation(0, 0);
+//        
+//        jpHeader.setSize(760, 34);
+//        jpHeader.setLocation(0, 0);
+//        
+//        contentMain.removeAll();
+//        contentMain.add(jpHeader, BorderLayout.NORTH);
+//        contentMain.add(mainMenu, BorderLayout.CENTER);
+//        contentMain.revalidate();
+//        contentMain.repaint();
+//        
+//        jpContent.removeAll();
+//        jpContent.add(contentMain, BorderLayout.CENTER);
+//        jpContent.revalidate();
+//        jpContent.repaint();
+        
+        setBackground(new Color(0, 0, 0, 0));
+        MainM = new jpMainMenu();
+        alumnos = new jpAlumnos(this);
+        calif = new jpCalificaciones();
+        
+        jpMenu1.initMoving(MainMenu.this);
+        jpMenu1.addEventMenuSelected(new EventMenuSelected() {
+            @Override
+            public void selected(int index) {
+                if (index == 0) {
+                    setForm(MainM);
+                } else if (index == 1) {
+                    setForm(alumnos);
+                } else if (index == 2) {
+                    setForm(calif);
+                }
+            }
+        });
+        //  set when system open start with home form
+        setForm(new jpMainMenu());
+    }
+
+    private void setForm(JComponent com) {
         jpContentMain contentMain = new jpContentMain();
-        contentMain.setSize(760, 606);
-        contentMain.setLocation(0, 0);
-        
-        jpContent.removeAll();
-        jpContent.add(contentMain, BorderLayout.CENTER);
-        jpContent.revalidate();
-        jpContent.repaint();
-        
-        jpMainMenu mainMenu = new jpMainMenu();
-        mainMenu.setSize(760, 606);
-        mainMenu.setLocation(0, 0);
-        
-        jpHeader.setSize(760, 34);
-        jpHeader.setLocation(0, 0);
-        
         contentMain.removeAll();
         contentMain.add(jpHeader, BorderLayout.NORTH);
-        contentMain.add(mainMenu, BorderLayout.CENTER);
+        contentMain.add(com, BorderLayout.CENTER);
         contentMain.revalidate();
         contentMain.repaint();
         
@@ -55,7 +95,6 @@ public class MainMenu extends javax.swing.JFrame {
         jpContent.revalidate();
         jpContent.repaint();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,6 +124,7 @@ public class MainMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(970, 640));
+        setUndecorated(true);
 
         jpBg.setBackground(new java.awt.Color(255, 255, 255));
         jpBg.setLayout(new java.awt.BorderLayout());
@@ -119,23 +159,19 @@ public class MainMenu extends javax.swing.JFrame {
         jpLeftMenuLayout.setHorizontalGroup(
             jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpLeftMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(12, 12, 12)
+                .addGroup(jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jpLeftMenuLayout.createSequentialGroup()
-                        .addGroup(jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jpLeftMenuLayout.createSequentialGroup()
-                .addComponent(jpMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
+            .addComponent(jpMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jpLeftMenuLayout.setVerticalGroup(
             jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpLeftMenuLayout.createSequentialGroup()
-                .addComponent(jpMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)

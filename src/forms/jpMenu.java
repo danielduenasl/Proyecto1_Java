@@ -4,20 +4,48 @@
  */
 package forms;
 
-import java.awt.*;
+import data.EventMenuSelected;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import javax.swing.JFrame;
+import models.Model_Menu;
 
 /**
  *
- * @author Daniel
+ * @author PC
  */
 public class jpMenu extends javax.swing.JPanel {
 
+    private EventMenuSelected event;
+
+    public void addEventMenuSelected(EventMenuSelected event) {
+        this.event = event;
+        lstMenu1.addEventMenuSelected(event);
+    }
     /**
      * Creates new form jpMenu
      */
     public jpMenu() {
         initComponents();
-             
+        setOpaque(false);
+        jpMoving.setOpaque(false);
+        lstMenu1.setOpaque(false);
+        init();
+    }
+
+    private void init() {
+        lstMenu1.addItem(new Model_Menu("", "OPCIONES", Model_Menu.MenuType.TITLE));
+        lstMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
+        lstMenu1.addItem(new Model_Menu("home", "Main Menu", Model_Menu.MenuType.MENU));
+        lstMenu1.addItem(new Model_Menu("users", "Alumnos", Model_Menu.MenuType.MENU));
+        lstMenu1.addItem(new Model_Menu("checklist", "Calificaciones", Model_Menu.MenuType.MENU));
+        lstMenu1.addItem(new Model_Menu("percentage", "Promedio", Model_Menu.MenuType.MENU));
     }
 
     /**
@@ -29,24 +57,35 @@ public class jpMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lstMenu1 = new models.LstMenu<>();
+        jpMoving = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+
+        setPreferredSize(new java.awt.Dimension(220, 425));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/api-app (1) (1).png"))); // NOI18N
-        jLabel1.setText("TEST TITLE");
+        jLabel1.setText("TEST");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        javax.swing.GroupLayout jpMovingLayout = new javax.swing.GroupLayout(jpMoving);
+        jpMoving.setLayout(jpMovingLayout);
+        jpMovingLayout.setHorizontalGroup(
+            jpMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpMovingLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jpMovingLayout.setVerticalGroup(
+            jpMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMovingLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -54,52 +93,54 @@ public class jpMenu extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                .addComponent(lstMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jpMoving, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(jpMoving, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lstMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     @Override
-    protected void paintComponent(Graphics grphcs) {
-        super.paintComponent(grphcs);
-
-        // Convertir a Graphics2D para usar funciones más avanzadas de gráficos
+    protected void paintChildren(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
-
-        // Habilitar anti-aliasing para un mejor acabado visual
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        // Crear un gradiente de color desde la parte superior a la inferior del panel
-        GradientPaint g = new GradientPaint(0, 0, Color.decode("#00ffda"), 0, getHeight(), Color.decode("#ff00f5"));
-
-        // Aplicar el gradiente al fondo del panel
+        GradientPaint g = new GradientPaint(0, 0, Color.decode("#f7dc05"), 150, 750, Color.decode("#e83216"));
         g2.setPaint(g);
-
-        // Dibujar un rectángulo con bordes redondeados para el fondo
-        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
-
-        // Dibujar un rectángulo adicional para efecto visual
-        g2.fillRect(getWidth() - 20, 0, 20, getHeight()); // Ajustar ancho a 20 para que sea visible
-        
-        // Llamar al método para pintar los hijos del panel, si hay alguno
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 0, 0);
+        g2.fillRect(getWidth() - 20, 0, getWidth(), getHeight());
         super.paintChildren(grphcs);
     }
     
+    private int x;
+    private int y;
+
+    public void initMoving(JFrame fram) {
+        jpMoving.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent me) {
+                x = me.getX();
+                y = me.getY();
+            }
+
+        });
+        jpMoving.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent me) {
+                fram.setLocation(me.getXOnScreen() - x, me.getYOnScreen() - y);
+            }
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jpMoving;
+    private models.LstMenu<String> lstMenu1;
     // End of variables declaration//GEN-END:variables
 }
