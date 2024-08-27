@@ -13,7 +13,11 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 /**
  *
@@ -95,6 +99,9 @@ public class MainMenu extends javax.swing.JFrame {
         jpContent.revalidate();
         jpContent.repaint();
     }
+    
+    private int x;
+    private int y;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,9 +114,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         jpBg = new javax.swing.JPanel();
         jpLeftMenu = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jpMenu1 = new forms.jpMenu();
         jpContent = new javax.swing.JPanel();
         jpHeader = new javax.swing.JPanel();
@@ -132,53 +136,8 @@ public class MainMenu extends javax.swing.JFrame {
         jpLeftMenu.setBackground(new java.awt.Color(102, 0, 102));
         jpLeftMenu.setMinimumSize(new java.awt.Dimension(200, 100));
         jpLeftMenu.setPreferredSize(new java.awt.Dimension(210, 484));
-
-        jButton1.setText("WELCOME");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("ALUMNOS");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("CALIFICACIONES");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jpLeftMenuLayout = new javax.swing.GroupLayout(jpLeftMenu);
-        jpLeftMenu.setLayout(jpLeftMenuLayout);
-        jpLeftMenuLayout.setHorizontalGroup(
-            jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpLeftMenuLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(77, Short.MAX_VALUE))
-            .addComponent(jpMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
-        jpLeftMenuLayout.setVerticalGroup(
-            jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpLeftMenuLayout.createSequentialGroup()
-                .addComponent(jpMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jpLeftMenu.setLayout(new java.awt.BorderLayout());
+        jpLeftMenu.add(jpMenu1, java.awt.BorderLayout.CENTER);
 
         jpBg.add(jpLeftMenu, java.awt.BorderLayout.LINE_START);
 
@@ -187,6 +146,19 @@ public class MainMenu extends javax.swing.JFrame {
 
         jpHeader.setBackground(new java.awt.Color(255, 255, 255));
         jpHeader.setPreferredSize(new java.awt.Dimension(714, 34));
+        jpHeader.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpHeaderMouseDragged(evt);
+            }
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jpHeaderMouseMoved(evt);
+            }
+        });
+        jpHeader.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpHeaderMousePressed(evt);
+            }
+        });
         jpHeader.setLayout(new java.awt.BorderLayout());
 
         jpBarClose.setBackground(new java.awt.Color(255, 255, 255));
@@ -199,6 +171,18 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/x (3) (2).png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+        });
         jpClose.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         jpBarClose.add(jpClose, java.awt.BorderLayout.EAST);
@@ -209,6 +193,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/minus (3) (2).png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jpMin.add(jLabel3, java.awt.BorderLayout.CENTER);
 
         jpBarClose.add(jpMin, java.awt.BorderLayout.WEST);
@@ -218,6 +203,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/squares (4) (2).png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jpMax.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jpBarClose.add(jpMax, java.awt.BorderLayout.CENTER);
@@ -233,68 +219,30 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jpMainMenu mainMenu = new jpMainMenu();
-        mainMenu.setSize(760, 606);
-        mainMenu.setLocation(0, 0);
-        
-        jpHeader.setSize(760, 34);
-        jpHeader.setLocation(0, 0);
-        
-        jpContentMain contentMain = new jpContentMain();
-        contentMain.removeAll();
-        contentMain.add(jpHeader, BorderLayout.NORTH);
-        contentMain.add(mainMenu, BorderLayout.CENTER);
-        contentMain.revalidate();
-        contentMain.repaint();
-        
-        jpContent.removeAll();
-        jpContent.add(contentMain, BorderLayout.CENTER);
-        jpContent.revalidate();
-        jpContent.repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jpHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpHeaderMouseDragged
+        this.setLocation(evt.getXOnScreen() - x, evt.getYOnScreen() - y);
+    }//GEN-LAST:event_jpHeaderMouseDragged
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jpAlumnos alumnos = new jpAlumnos(this);
-        alumnos.setSize(760, 606);
-        alumnos.setLocation(0, 0);
+    private void jpHeaderMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpHeaderMouseMoved
         
-        jpHeader.setSize(760, 34);
-        jpHeader.setLocation(0, 0);
-        
-        jpContentMain contentMain = new jpContentMain();
-        contentMain.removeAll();
-        contentMain.add(jpHeader, BorderLayout.NORTH);
-        contentMain.add(alumnos, BorderLayout.CENTER);
-        contentMain.revalidate();
-        contentMain.repaint();
-        
-        jpContent.removeAll();
-        jpContent.add(contentMain, BorderLayout.CENTER);
-        jpContent.revalidate();
-        jpContent.repaint();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jpHeaderMouseMoved
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        jpCalificaciones calificaiones = new jpCalificaciones();
-        calificaiones.setSize(760, 606);
-        calificaiones.setLocation(0, 0);
-        
-        jpHeader.setSize(760, 34);
-        jpHeader.setLocation(0, 0);
-        
-        jpContentMain contentMain = new jpContentMain();
-        contentMain.removeAll();
-        contentMain.add(jpHeader, BorderLayout.NORTH);
-        contentMain.add(calificaiones, BorderLayout.CENTER);
-        contentMain.revalidate();
-        contentMain.repaint();
-        
-        jpContent.removeAll();
-        jpContent.add(contentMain, BorderLayout.CENTER);
-        jpContent.revalidate();
-        jpContent.repaint();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jpHeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpHeaderMousePressed
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_jpHeaderMousePressed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        jpClose.setBackground(new Color(204, 204, 204));
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        jpClose.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_jLabel2MouseExited
 
     /**
      * @param args the command line arguments
@@ -332,9 +280,6 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

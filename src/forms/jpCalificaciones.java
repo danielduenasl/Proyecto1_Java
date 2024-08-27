@@ -33,7 +33,7 @@ public class jpCalificaciones extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(760, 606));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel1.setText("CALIFICACIONES");
