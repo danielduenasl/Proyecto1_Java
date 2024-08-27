@@ -7,6 +7,11 @@ package frames;
 import data.Student;
 import forms.*;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 /**
  *
@@ -31,6 +36,24 @@ public class MainMenu extends javax.swing.JFrame {
         jpContent.add(contentMain, BorderLayout.CENTER);
         jpContent.revalidate();
         jpContent.repaint();
+        
+        jpMainMenu mainMenu = new jpMainMenu();
+        mainMenu.setSize(760, 606);
+        mainMenu.setLocation(0, 0);
+        
+        jpHeader.setSize(760, 34);
+        jpHeader.setLocation(0, 0);
+        
+        contentMain.removeAll();
+        contentMain.add(jpHeader, BorderLayout.NORTH);
+        contentMain.add(mainMenu, BorderLayout.CENTER);
+        contentMain.revalidate();
+        contentMain.repaint();
+        
+        jpContent.removeAll();
+        jpContent.add(contentMain, BorderLayout.CENTER);
+        jpContent.revalidate();
+        jpContent.repaint();
     }
     
 
@@ -48,6 +71,7 @@ public class MainMenu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jpMenu1 = new forms.jpMenu();
         jpContent = new javax.swing.JPanel();
         jpHeader = new javax.swing.JPanel();
         jpBarClose = new javax.swing.JPanel();
@@ -59,12 +83,13 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(970, 640));
 
         jpBg.setBackground(new java.awt.Color(255, 255, 255));
         jpBg.setLayout(new java.awt.BorderLayout());
 
-        jpLeftMenu.setBackground(new java.awt.Color(102, 0, 0));
+        jpLeftMenu.setBackground(new java.awt.Color(102, 0, 102));
         jpLeftMenu.setMinimumSize(new java.awt.Dimension(200, 100));
         jpLeftMenu.setPreferredSize(new java.awt.Dimension(210, 484));
 
@@ -93,24 +118,30 @@ public class MainMenu extends javax.swing.JFrame {
         jpLeftMenu.setLayout(jpLeftMenuLayout);
         jpLeftMenuLayout.setHorizontalGroup(
             jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLeftMenuLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+            .addGroup(jpLeftMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(17, 17, 17))
+                    .addGroup(jpLeftMenuLayout.createSequentialGroup()
+                        .addGroup(jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jpLeftMenuLayout.createSequentialGroup()
+                .addComponent(jpMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
         jpLeftMenuLayout.setVerticalGroup(
             jpLeftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpLeftMenuLayout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addComponent(jpMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addGap(303, 303, 303))
+                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpBg.add(jpLeftMenu, java.awt.BorderLayout.LINE_START);
@@ -278,6 +309,7 @@ public class MainMenu extends javax.swing.JFrame {
     public javax.swing.JPanel jpHeader;
     private javax.swing.JPanel jpLeftMenu;
     private javax.swing.JPanel jpMax;
+    private forms.jpMenu jpMenu1;
     private javax.swing.JPanel jpMin;
     // End of variables declaration//GEN-END:variables
 }

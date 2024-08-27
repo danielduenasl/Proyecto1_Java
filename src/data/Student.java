@@ -4,6 +4,8 @@
  */
 package data;
 
+import java.util.List;
+
 /**
  *
  * @author PC
@@ -12,11 +14,14 @@ public class Student extends Person {
     
     private String carne;
     private String degree;
+    private List<Qualification> qualifications;
 
-    public Student(String carne, String degree, String name, String lastName, int age, float size) {
-        super(name, lastName, age, size);
-        this.carne = carne;
-        this.degree = degree;
+    public List<Qualification> getQualifications() {
+        return qualifications;
+    }
+
+    public void setQualifications(List<Qualification> qualifications) {
+        this.qualifications = qualifications;
     }
 
     public String getCarne() {
@@ -37,6 +42,12 @@ public class Student extends Person {
 
     public Student() {
     }
-    
+
+    public Student(String carne, String degree, List<Qualification> qualifications, String name, String lastName, int age, float size) {
+        super(name, lastName, age, size);
+        this.carne = carne;
+        this.degree = degree;
+        this.qualifications = qualifications;
+    }
     
 }
