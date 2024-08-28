@@ -29,6 +29,7 @@ public class MainMenu extends javax.swing.JFrame {
     private jpAlumnos alumnos;
     private jpCalificaciones calif;
     private jpPromedio promed;
+    private jpMejoresAlumnos mejorAlum;
     
     /**
      * Creates new form MainMenu
@@ -41,6 +42,7 @@ public class MainMenu extends javax.swing.JFrame {
         alumnos = new jpAlumnos(this);
         calif = new jpCalificaciones();
         promed = new jpPromedio();
+        mejorAlum = new jpMejoresAlumnos();
         
         jpMenu1.initMoving(MainMenu.this);
         jpMenu1.addEventMenuSelected(new EventMenuSelected() {
@@ -54,6 +56,8 @@ public class MainMenu extends javax.swing.JFrame {
                     setForm(calif);
                 } else if (index == 5){
                     setForm(promed);
+                } else if (index == 6){
+                    setForm(mejorAlum);
                 }
               
             }

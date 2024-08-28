@@ -46,6 +46,7 @@ public class jpMenu extends javax.swing.JPanel {
         lstMenu1.addItem(new Model_Menu("users", "Alumnos", Model_Menu.MenuType.MENU));
         lstMenu1.addItem(new Model_Menu("checklist", "Calificaciones", Model_Menu.MenuType.MENU));
         lstMenu1.addItem(new Model_Menu("percentage", "Promedio", Model_Menu.MenuType.MENU));
+        lstMenu1.addItem(new Model_Menu("medal1", "Mejores Alumnos", Model_Menu.MenuType.MENU));
     }
 
     /**
