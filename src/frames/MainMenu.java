@@ -65,7 +65,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void setForm(JComponent com) {
         jpContentMain contentMain = new jpContentMain();
         contentMain.removeAll();
-        contentMain.add(jpHeader, BorderLayout.NORTH);
+        contentMain.add(jpBarHeader, BorderLayout.NORTH);
         contentMain.add(com, BorderLayout.CENTER);
         contentMain.revalidate();
         contentMain.repaint();
@@ -92,7 +92,7 @@ public class MainMenu extends javax.swing.JFrame {
         jpLeftMenu = new javax.swing.JPanel();
         jpMenu1 = new forms.jpMenu();
         jpContent = new javax.swing.JPanel();
-        jpHeader = new javax.swing.JPanel();
+        jpBarHeader = new javax.swing.JPanel();
         jpBarClose = new javax.swing.JPanel();
         jpClose = new javax.swing.JPanel();
         jlClose = new javax.swing.JLabel();
@@ -120,25 +120,19 @@ public class MainMenu extends javax.swing.JFrame {
         jpContent.setBackground(new java.awt.Color(204, 204, 204));
         jpContent.setLayout(new java.awt.BorderLayout());
 
-        jpHeader.setBackground(new java.awt.Color(255, 255, 255));
-        jpHeader.setPreferredSize(new java.awt.Dimension(714, 34));
-        jpHeader.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        jpBarHeader.setBackground(new java.awt.Color(255, 255, 255));
+        jpBarHeader.setPreferredSize(new java.awt.Dimension(100, 34));
+        jpBarHeader.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jpHeaderMouseDragged(evt);
-            }
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jpHeaderMouseMoved(evt);
+                jpBarHeaderMouseDragged(evt);
             }
         });
-        jpHeader.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jpHeaderMouseClicked(evt);
-            }
+        jpBarHeader.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jpHeaderMousePressed(evt);
+                jpBarHeaderMousePressed(evt);
             }
         });
-        jpHeader.setLayout(new java.awt.BorderLayout());
+        jpBarHeader.setLayout(new java.awt.BorderLayout());
 
         jpBarClose.setBackground(new java.awt.Color(255, 255, 255));
         jpBarClose.setPreferredSize(new java.awt.Dimension(102, 34));
@@ -209,9 +203,9 @@ public class MainMenu extends javax.swing.JFrame {
 
         jpBarClose.add(jpMax, java.awt.BorderLayout.CENTER);
 
-        jpHeader.add(jpBarClose, java.awt.BorderLayout.LINE_END);
+        jpBarHeader.add(jpBarClose, java.awt.BorderLayout.LINE_END);
 
-        jpContent.add(jpHeader, java.awt.BorderLayout.PAGE_START);
+        jpContent.add(jpBarHeader, java.awt.BorderLayout.PAGE_START);
 
         jpBg.add(jpContent, java.awt.BorderLayout.CENTER);
 
@@ -219,19 +213,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jpHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpHeaderMouseDragged
-        this.setLocation(evt.getXOnScreen() - x, evt.getYOnScreen() - y);
-    }//GEN-LAST:event_jpHeaderMouseDragged
-
-    private void jpHeaderMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpHeaderMouseMoved
-        
-    }//GEN-LAST:event_jpHeaderMouseMoved
-
-    private void jpHeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpHeaderMousePressed
-        x = evt.getX();
-        y = evt.getY();
-    }//GEN-LAST:event_jpHeaderMousePressed
 
     private void jlCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCloseMouseClicked
         System.exit(0);
@@ -276,16 +257,16 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jlMinMouseClicked
 
-    private void jpHeaderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpHeaderMouseClicked
-        if (evt.getClickCount() == 2){
-            if(this.getExtendedState()!= MainMenu.MAXIMIZED_BOTH){
-              this.setExtendedState(MainMenu.MAXIMIZED_BOTH);
-            }
-            else{
-                this.setExtendedState(MainMenu.NORMAL);
-            }
-        }
-    }//GEN-LAST:event_jpHeaderMouseClicked
+    private int getX;
+    private int getY;
+    private void jpBarHeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBarHeaderMousePressed
+        getX = evt.getX();
+        getY = evt.getY();
+    }//GEN-LAST:event_jpBarHeaderMousePressed
+
+    private void jpBarHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBarHeaderMouseDragged
+        this.setLocation(evt.getXOnScreen() - getX, evt.getYOnScreen() - getY);
+    }//GEN-LAST:event_jpBarHeaderMouseDragged
 
     /**
      * @param args the command line arguments
@@ -327,10 +308,10 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jlMax;
     private javax.swing.JLabel jlMin;
     private javax.swing.JPanel jpBarClose;
+    public javax.swing.JPanel jpBarHeader;
     private javax.swing.JPanel jpBg;
     private javax.swing.JPanel jpClose;
     public javax.swing.JPanel jpContent;
-    public javax.swing.JPanel jpHeader;
     private javax.swing.JPanel jpLeftMenu;
     private javax.swing.JPanel jpMax;
     private forms.jpMenu jpMenu1;

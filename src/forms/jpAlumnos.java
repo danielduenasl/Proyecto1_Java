@@ -86,6 +86,7 @@ public class jpAlumnos extends javax.swing.JPanel {
             }
         });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.setOpaque(false);
         jTable1.setSelectionBackground(new java.awt.Color(255, 102, 0));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -194,7 +195,7 @@ public class jpAlumnos extends javax.swing.JPanel {
 
         jpContentMain contentMain = new jpContentMain();
         contentMain.removeAll();
-        contentMain.add(mainMenu.jpHeader, BorderLayout.NORTH);
+        contentMain.add(mainMenu.jpBarHeader, BorderLayout.NORTH);
         contentMain.add(infoAlumno, BorderLayout.CENTER);
         contentMain.revalidate();
         contentMain.repaint();
