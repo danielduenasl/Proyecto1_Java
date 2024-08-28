@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import frames.*;
+import java.awt.Color;
 
 /**
  *
@@ -47,7 +48,8 @@ public class jpAlumnos extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jpBtnInfo = new javax.swing.JPanel();
+        jlBtnInfo = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(760, 606));
         setLayout(new java.awt.BorderLayout());
@@ -110,17 +112,25 @@ public class jpAlumnos extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel2.setText("GRADO");
 
-        jButton1.setText("Consultar informacion");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jpBtnInfo.setBackground(new java.awt.Color(247, 220, 5));
+        jpBtnInfo.setLayout(new java.awt.BorderLayout());
+
+        jlBtnInfo.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jlBtnInfo.setForeground(new java.awt.Color(51, 51, 0));
+        jlBtnInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlBtnInfo.setText("CONSULTAR INFORMACIÓN");
+        jlBtnInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                jlBtnInfoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlBtnInfoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlBtnInfoMouseExited(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jpBtnInfo.add(jlBtnInfo, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,15 +139,15 @@ public class jpAlumnos extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(509, 509, 509)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jpBtnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(153, 153, 153)
-                                .addComponent(jComboBox1, 0, 460, Short.MAX_VALUE))
+                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE))))
                 .addGap(54, 54, 54))
@@ -152,10 +162,10 @@ public class jpAlumnos extends javax.swing.JPanel {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(46, 46, 46))
+                .addComponent(jpBtnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -165,10 +175,18 @@ public class jpAlumnos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+    private void jlBtnInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBtnInfoMouseEntered
+        jpBtnInfo.setBackground(new Color (236, 179, 6));
+    }//GEN-LAST:event_jlBtnInfoMouseEntered
+
+    private void jlBtnInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBtnInfoMouseExited
+        jpBtnInfo.setBackground(new Color (247, 220, 5));
+    }//GEN-LAST:event_jlBtnInfoMouseExited
+
+    private void jlBtnInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBtnInfoMouseClicked
+       
         Student alumno = new Student();
-        alumno.setName("Daniel");
+        alumno.setName("Dalila");
         
         jpInfoAlumno infoAlumno = new jpInfoAlumno(alumno);
         infoAlumno.setSize(760, 606);
@@ -176,6 +194,7 @@ public class jpAlumnos extends javax.swing.JPanel {
 
         jpContentMain contentMain = new jpContentMain();
         contentMain.removeAll();
+        contentMain.add(mainMenu.jpHeader, BorderLayout.NORTH);
         contentMain.add(infoAlumno, BorderLayout.CENTER);
         contentMain.revalidate();
         contentMain.repaint();
@@ -184,21 +203,17 @@ public class jpAlumnos extends javax.swing.JPanel {
         mainMenu.jpContent.add(contentMain, BorderLayout.CENTER);
         mainMenu.jpContent.revalidate();
         mainMenu.jpContent.repaint();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-       
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_jlBtnInfoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jlBtnInfo;
+    private javax.swing.JPanel jpBtnInfo;
     // End of variables declaration//GEN-END:variables
 }
