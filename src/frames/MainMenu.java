@@ -73,11 +73,11 @@ public class MainMenu extends javax.swing.JFrame {
         jpMenu1.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
-                if (index == 0) {
+                if (index == 2) {
                     setForm(MainM);
-                } else if (index == 1) {
+                } else if (index == 3) {
                     setForm(alumnos);
-                } else if (index == 2) {
+                } else if (index == 4) {
                     setForm(calif);
                 }
             }
