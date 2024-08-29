@@ -63,20 +63,24 @@ public class jpAlumnos extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                " Clave", "         Nombre", "         Apellido", "            Carnet"
+                "Carnet", "Nombre", "Grado", "Apellido", "Edad", "Sexo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -97,10 +101,6 @@ public class jpAlumnos extends javax.swing.JPanel {
             jTable1.getColumnModel().getColumn(0).setMinWidth(50);
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(0).setHeaderValue(" Clave");
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("         Nombre");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("         Apellido");
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("            Carnet");
         }
 
         jComboBox1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -136,7 +136,6 @@ public class jpAlumnos extends javax.swing.JPanel {
         jpBtnInfo.add(jlBtnInfo, java.awt.BorderLayout.CENTER);
 
         jpBtnNotas.setBackground(new java.awt.Color(247, 220, 5));
-        jpBtnNotas.setPreferredSize(new java.awt.Dimension(10, 10));
         jpBtnNotas.setLayout(new java.awt.BorderLayout());
 
         jlBtnInfo1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -188,7 +187,7 @@ public class jpAlumnos extends javax.swing.JPanel {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -234,6 +233,7 @@ public class jpAlumnos extends javax.swing.JPanel {
         mainMenu.jpContent.add(contentMain, BorderLayout.CENTER);
         mainMenu.jpContent.revalidate();
         mainMenu.jpContent.repaint();
+        
     }//GEN-LAST:event_jlBtnInfoMouseClicked
 
     private void jlBtnInfo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBtnInfo1MouseClicked

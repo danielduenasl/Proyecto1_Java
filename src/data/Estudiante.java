@@ -4,6 +4,7 @@
  */
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,16 +14,19 @@ import java.util.List;
 public class Estudiante extends Persona {
     
     private String carne;
-    private String degree;
-    private List<Calificacion> qualifications;
+    private String grado;
+    public static List<Estudiante> studentList = new ArrayList<>();
 
-    public List<Calificacion> getQualifications() {
-        return qualifications;
-    }
+    //private List<Calificacion> calificacion;
 
-    public void setQualifications(List<Calificacion> qualifications) {
-        this.qualifications = qualifications;
-    }
+//    
+//    public List<Calificacion> getCalificacion() {
+//        return calificacion;
+//    }
+//
+//    public void setQualifications(List<Calificacion> calificacion) {
+//        this.calificacion = calificacion;
+//    }
 
     public String getCarne() {
         return carne;
@@ -32,22 +36,27 @@ public class Estudiante extends Persona {
         this.carne = carne;
     }
 
-    public String getDegree() {
-        return degree;
+    public String getGrado() {
+        return grado;
     }
 
-    public void setDegree(String degree) {
-        this.degree = degree;
+    public void setGrado(String grado) {
+        this.grado = grado;
     }
 
     public Estudiante() {
     }
 
-    public Estudiante(String carne, String degree, List<Calificacion> qualifications, String name, String lastName, int age, float size) {
-        super(name, lastName, age, size);
+    public Estudiante(String carne, String grado, String nombre, String apellido, int edad, String sexo) {
+        super(nombre, apellido, edad,sexo);
         this.carne = carne;
-        this.degree = degree;
-        this.qualifications = qualifications;
+        this.grado = grado;
+       // this.calificacion = calificacion;
     }
-    
+    public static void addEstudent(Estudiante estudiante) {
+        studentList.add(estudiante);
+    }
+
+   
+
 }

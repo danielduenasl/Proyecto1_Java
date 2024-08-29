@@ -10,53 +10,51 @@ package data;
  */
 public class Persona {
     
-    private String name;
-    private String lastName;
-    private int age;
-    private float size;
-    private String sex;
+    private String nombre;
+    private String apellido;
+    private int edad;
+    private String sexo;
 
     public String getName() {
-        return name;
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getLastName() {
-        return lastName;
+        return apellido;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String apellido) {
+        this.apellido = apellido;
     }
 
     public int getAge() {
-        return age;
+        return edad;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAge(int edad) {
+        this.edad = edad;
     }
 
-    public float getSize() {
-        return size;
+    public String getSize() {
+        return sexo;
     }
 
-    public void setSize(float size) {
-        this.size = size;
+    public void setSize(String sexo) {
+        this.sexo = sexo;
+    }
+    public Persona(){}
+    public Persona(String nombre, String apellido, int edad, String sexo) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.sexo = sexo;
+      
     }
 
-    public Persona(String name, String lastName, int age, float size) {
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;
-        this.size = size;
-    }
-
-    public Persona() {
-    }
-    
+   
     
 }

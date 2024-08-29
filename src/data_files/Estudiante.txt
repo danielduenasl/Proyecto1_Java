@@ -1,0 +1,10 @@
+20201010,Ingeniería en Sistemas,Juan,Pérez,20,M
+20201011,Derecho,Ana,Gómez,21,F
+20201012,Medicina,Carlos,Ramírez,22,M
+20201013,Arquitectura,Lucía,Fernández,19,F
+20201014,Ingeniería Industrial,Pedro,Sánchez,23,M
+20201015,Psicología,María,Martínez,20,F
+20201016,Economía,José,Hernández,24,M
+20201017,Contabilidad,Sofía,Ortiz,21,F
+20201018,Ingeniería Civil,Manuel,Morales,22,M
+20201019,Administración de Empresas,Laura,Núñez,22,F

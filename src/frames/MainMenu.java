@@ -16,6 +16,10 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
@@ -36,7 +40,7 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
-        
+        getDataEstudiante();
         setBackground(new Color(0, 0, 0, 0));
         MainM = new jpMainMenu();
         alumnos = new jpAlumnos(this);
@@ -78,6 +82,43 @@ public class MainMenu extends javax.swing.JFrame {
         jpContent.add(contentMain, BorderLayout.CENTER);
         jpContent.revalidate();
         jpContent.repaint();
+    }
+    public static void getDataEstudiante() {
+        String archivo = "C:\\Desarrollos U\\Proyecto Progra 2\\Proyecto1_Java\\src\\data_files\\Estudiante.txt";
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), "UTF-8"))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                // Dividir la línea por comas
+                String[] datos = linea.split(",");
+
+                // Asignar valores a variables
+                String carnet = datos[0];
+                String grado = datos[1];
+                String nombre = datos[2];
+                String apellido = datos[3];
+                int edad = Integer.parseInt(datos[4]);
+                String sexo = datos[5];
+
+                // Crear un objeto de tipo Estudiante
+                Estudiante estudiante = new Estudiante(carnet, grado, nombre, apellido, edad, sexo);
+
+                // Agregar el estudiante a la lista estática
+                Estudiante.addEstudent(estudiante);
+
+                // Mostrar los datos
+                System.out.println("Carnet: " + carnet);
+                System.out.println("Grado: " + grado);
+                System.out.println("Nombre: " + nombre);
+                System.out.println("Apellido: " + apellido);
+                System.out.println("Edad: " + edad);
+                System.out.println("Sexo: " + sexo);
+                System.out.println("-------------------------");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     private int x;
