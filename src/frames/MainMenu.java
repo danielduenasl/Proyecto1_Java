@@ -9,19 +9,16 @@ import data.Estudiante;
 import forms.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import models.LoadData;
 
 /**
  *
@@ -35,15 +32,18 @@ public class MainMenu extends javax.swing.JFrame {
     private jpPromedio promed;
     private jpMejoresAlumnos mejorAlum;
     
+    private static List<Estudiante> estudiantes;
+    
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
         initComponents();
+        
         getDataEstudiante();
         setBackground(new Color(0, 0, 0, 0));
         MainM = new jpMainMenu();
-        alumnos = new jpAlumnos(this);
+        alumnos = new jpAlumnos(this, estudiantes);
         calif = new jpCalificaciones();
         promed = new jpPromedio();
         mejorAlum = new jpMejoresAlumnos();
@@ -83,8 +83,10 @@ public class MainMenu extends javax.swing.JFrame {
         jpContent.revalidate();
         jpContent.repaint();
     }
+    
     public static void getDataEstudiante() {
-        String archivo = "C:\\Desarrollos U\\Proyecto Progra 2\\Proyecto1_Java\\src\\data_files\\Estudiante.txt";
+        String archivo = new File("").getAbsolutePath() + "\\src\\data_files\\Estudiante.txt";
+        estudiantes = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), "UTF-8"))) {
             String linea;
@@ -106,6 +108,8 @@ public class MainMenu extends javax.swing.JFrame {
 
                 // Agregar el estudiante a la lista estática
                 Estudiante.addEstudent(estudiante);
+                //--------------
+                estudiantes.add(estudiante);
 
                 // Mostrar los datos
                 System.out.println("Carnet: " + carnet);

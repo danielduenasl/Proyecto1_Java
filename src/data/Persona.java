@@ -39,11 +39,11 @@ public class Persona {
         this.edad = edad;
     }
 
-    public String getSize() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSize(String sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
     public Persona(){}

@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import frames.*;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,12 +21,17 @@ import java.awt.Color;
 public class jpAlumnos extends javax.swing.JPanel {
 
     private MainMenu mainMenu;
+    private List<Estudiante> ListEstudiantes;
+            
     /**
      * Creates new form jpAlumnos
      */
-    public jpAlumnos(MainMenu mainM) {
+    public jpAlumnos(MainMenu mainM, List<Estudiante> estudiantes) {
         initComponents();
         
+        ListEstudiantes = new ArrayList<>();
+        ListEstudiantes = estudiantes;
+        addRows();
         
         this.mainMenu = mainM;
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -31,6 +39,19 @@ public class jpAlumnos extends javax.swing.JPanel {
         jTable1.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
         
         
+    }
+    
+    
+    private void addRows(){
+        
+        String[] columnas = {"Carnet", "Nombre", "Grado", "Apellido", "Edad", "Sexo"};
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+        
+        for(Estudiante student : ListEstudiantes ){
+            Object[] fila = {student.getCarne(), student.getName(), student.getGrado(), student.getLastName(), student.getAge(), student.getSexo()};
+            modelo.addRow(fila);
+        }  
+        jTable1.setModel(modelo);
     }
 
     /**
@@ -216,7 +237,17 @@ public class jpAlumnos extends javax.swing.JPanel {
     private void jlBtnInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBtnInfoMouseClicked
        
         Estudiante alumno = new Estudiante();
-        alumno.setName("Dalila");
+        int row = jTable1.getSelectedRow();
+            if (row != -1) {
+                
+            alumno.setCarne((String) jTable1.getValueAt(row, 0));
+            alumno.setGrado((String) jTable1.getValueAt(row, 1));
+            alumno.setName((String) jTable1.getValueAt(row, 2));
+            alumno.setLastName((String) jTable1.getValueAt(row, 3));
+            alumno.setAge((Integer) jTable1.getValueAt(row, 4));
+            alumno.setSexo((String) jTable1.getValueAt(row, 5));
+
+        }
         
         jpInfoAlumno infoAlumno = new jpInfoAlumno(alumno);
         infoAlumno.setSize(760, 606);

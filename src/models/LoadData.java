@@ -17,20 +17,33 @@ import java.util.List;
  */
 public class LoadData {
     
-    public static List<Estudiante> cargarPersonas(String archivo) throws IOException {
+    
+    public static List<Estudiante> cargarEstudiantes(String archivo){
         List<Estudiante> students = new ArrayList<>();
         Estudiante newStudent;
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+        
+        try
+        {
+            BufferedReader br = new BufferedReader(new FileReader(archivo));
             String linea;
             while ((linea = br.readLine()) != null) {
                 newStudent = new Estudiante();
                 String[] datos = linea.split(",");
-                if (datos.length == 4) {   
+                if (datos.length == 7) {  
+                    newStudent.setCarne(datos[0]);
+                    newStudent.setGrado(datos[1]);
+                    newStudent.setName(datos[2]);
+                    newStudent.setLastName(datos[3]);
+                    newStudent.setAge(Integer.parseInt(datos[4]));
+                    newStudent.setSexo(datos[5]);
+                    
                     students.add(newStudent);
                 }
             }
         }
+        catch (Exception ex)
+        {}
+        
         return students;
     }
-    
 }
