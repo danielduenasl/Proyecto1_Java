@@ -4,7 +4,7 @@
  */
 package forms;
 
-import data.Student;
+import data.Estudiante;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -216,7 +216,7 @@ public class jpAlumnos extends javax.swing.JPanel {
 
     private void jlBtnInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBtnInfoMouseClicked
        
-        Student alumno = new Student();
+        Estudiante alumno = new Estudiante();
         alumno.setName("Dalila");
         
         jpInfoAlumno infoAlumno = new jpInfoAlumno(alumno);

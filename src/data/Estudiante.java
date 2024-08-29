@@ -10,17 +10,17 @@ import java.util.List;
  *
  * @author PC
  */
-public class Student extends Person {
+public class Estudiante extends Persona {
     
     private String carne;
     private String degree;
-    private List<Qualification> qualifications;
+    private List<Calificacion> qualifications;
 
-    public List<Qualification> getQualifications() {
+    public List<Calificacion> getQualifications() {
         return qualifications;
     }
 
-    public void setQualifications(List<Qualification> qualifications) {
+    public void setQualifications(List<Calificacion> qualifications) {
         this.qualifications = qualifications;
     }
 
@@ -40,10 +40,10 @@ public class Student extends Person {
         this.degree = degree;
     }
 
-    public Student() {
+    public Estudiante() {
     }
 
-    public Student(String carne, String degree, List<Qualification> qualifications, String name, String lastName, int age, float size) {
+    public Estudiante(String carne, String degree, List<Calificacion> qualifications, String name, String lastName, int age, float size) {
         super(name, lastName, age, size);
         this.carne = carne;
         this.degree = degree;

@@ -4,7 +4,7 @@
  */
 package models;
 
-import data.Student;
+import data.Estudiante;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,13 +17,13 @@ import java.util.List;
  */
 public class LoadData {
     
-    public static List<Student> cargarPersonas(String archivo) throws IOException {
-        List<Student> students = new ArrayList<>();
-        Student newStudent;
+    public static List<Estudiante> cargarPersonas(String archivo) throws IOException {
+        List<Estudiante> students = new ArrayList<>();
+        Estudiante newStudent;
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
-                newStudent = new Student();
+                newStudent = new Estudiante();
                 String[] datos = linea.split(",");
                 if (datos.length == 4) {   
                     students.add(newStudent);

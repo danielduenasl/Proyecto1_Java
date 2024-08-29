@@ -4,7 +4,7 @@
  */
 package forms;
 
-import data.Student;
+import data.Estudiante;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ public class jpInfoAlumno extends javax.swing.JPanel {
     /**
      * Creates new form jpInfoAlumno
      */
-    public jpInfoAlumno(Student alumno) {
+    public jpInfoAlumno(Estudiante alumno) {
         initComponents();
         
         jTextNombre.setText(alumno.getName());

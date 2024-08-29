@@ -8,7 +8,7 @@ package data;
  *
  * @author PC
  */
-public class Person {
+public class Persona {
     
     private String name;
     private String lastName;
@@ -48,14 +48,14 @@ public class Person {
         this.size = size;
     }
 
-    public Person(String name, String lastName, int age, float size) {
+    public Persona(String name, String lastName, int age, float size) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
         this.size = size;
     }
 
-    public Person() {
+    public Persona() {
     }
     
     

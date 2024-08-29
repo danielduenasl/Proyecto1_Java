@@ -8,7 +8,7 @@ package data;
  *
  * @author PC
  */
-public class Qualification extends Student{
+public class Calificacion extends Student{
     
     private String subject;
     private float note1;
@@ -58,7 +58,7 @@ public class Qualification extends Student{
         this.note4 = note4;
     }
 
-    public Qualification(String subject, float note1, float note2, float note3, float note4) {
+    public Calificacion(String subject, float note1, float note2, float note3, float note4) {
         this.subject = subject;
         this.note1 = note1;
         this.note2 = note2;

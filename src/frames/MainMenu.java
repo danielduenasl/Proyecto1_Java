@@ -5,7 +5,7 @@
 package frames;
 
 import data.EventMenuSelected;
-import data.Student;
+import data.Estudiante;
 import forms.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
