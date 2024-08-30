@@ -166,8 +166,8 @@
                 <StringItem index="0" value="Primero primaria"/>
                 <StringItem index="1" value="Segundo primaria"/>
                 <StringItem index="2" value="Tercero primaria"/>
-                <StringItem index="3" value="Cuarto primaria "/>
-                <StringItem index="4" value="Quinto primaria "/>
+                <StringItem index="3" value="Cuarto primaria"/>
+                <StringItem index="4" value="Quinto primaria"/>
                 <StringItem index="5" value="Sexto primaria"/>
               </StringArray>
             </Property>

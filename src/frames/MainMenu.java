@@ -32,9 +32,11 @@ public class MainMenu extends javax.swing.JFrame {
     private jpCalificaciones calif;
     private jpPromedio promed;
     private jpMejoresAlumnos mejorAlum;
+    private jpMateria materia;
    
     
     private static List<Estudiante> estudiantes;
+    private static List<Materia> materias;
     
     /**
      * Creates new form MainMenu
@@ -50,7 +52,7 @@ public class MainMenu extends javax.swing.JFrame {
         calif = new jpCalificaciones();
         promed = new jpPromedio();
         mejorAlum = new jpMejoresAlumnos();
-        //materia = new jpMateria();
+        materia = new jpMateria(this, materias);
         
         jpMenu1.initMoving(MainMenu.this);
         jpMenu1.addEventMenuSelected(new EventMenuSelected() {
@@ -66,6 +68,8 @@ public class MainMenu extends javax.swing.JFrame {
                     setForm(promed);
                 } else if (index == 6){
                     setForm(mejorAlum);
+                } else if (index == 7){
+                    setForm(materia);
                 }
               
             }
@@ -129,8 +133,8 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }
     public static void getDataMateria(){
-              String archivo = new File("").getAbsolutePath() + "\\src\\data_files\\Materia.txt";
-        estudiantes = new ArrayList<>();
+        String archivo = new File("").getAbsolutePath() + "\\src\\data_files\\Materia.txt";
+        materias = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), "UTF-8"))) {
             String linea;
@@ -147,6 +151,8 @@ public class MainMenu extends javax.swing.JFrame {
                 // Crear objeto Materia y agregarlo a la lista
                 Materia materia = new Materia(idMateria, nombre, descripcion);
                 Materia.agregarMaterias(materia);
+                
+                materias.add(materia);
                      System.out.println(idMateria);
                      System.out.println(nombre);
                      System.out.println(descripcion);
@@ -172,6 +178,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         jpBg = new javax.swing.JPanel();
         jpLeftMenu = new javax.swing.JPanel();
+        jpMenu1 = new forms.jpMenu();
         jpContent = new javax.swing.JPanel();
         jpBarHeader = new javax.swing.JPanel();
         jpBarClose = new javax.swing.JPanel();
@@ -194,6 +201,8 @@ public class MainMenu extends javax.swing.JFrame {
         jpLeftMenu.setMinimumSize(new java.awt.Dimension(200, 100));
         jpLeftMenu.setPreferredSize(new java.awt.Dimension(210, 484));
         jpLeftMenu.setLayout(new java.awt.BorderLayout());
+        jpLeftMenu.add(jpMenu1, java.awt.BorderLayout.CENTER);
+
         jpBg.add(jpLeftMenu, java.awt.BorderLayout.LINE_START);
 
         jpContent.setBackground(new java.awt.Color(204, 204, 204));
@@ -393,6 +402,7 @@ public class MainMenu extends javax.swing.JFrame {
     public javax.swing.JPanel jpContent;
     private javax.swing.JPanel jpLeftMenu;
     private javax.swing.JPanel jpMax;
+    private forms.jpMenu jpMenu1;
     private javax.swing.JPanel jpMin;
     // End of variables declaration//GEN-END:variables
 }

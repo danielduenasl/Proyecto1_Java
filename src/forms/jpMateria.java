@@ -26,18 +26,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class jpMateria extends javax.swing.JPanel {
 
-//    private MainMenu mainMenu;
-//    private List<Estudiante> ListEstudiantes;
+    private MainMenu mainMenu;
+    private List<Materia> ListMaterias;
 //    private JComboBox<String> gradoComboBox;   
 //    private DefaultTableModel tableModel;
     /**
      * Creates new form jpAlumnos
      */
-    public jpMateria(MainMenu mainM, List<Estudiante> estudiantes) {
+    public jpMateria(MainMenu mainM, List<Materia> materias) {
         initComponents();
         
-//        ListEstudiantes = new ArrayList<>();
-//        ListEstudiantes = estudiantes;
+        ListMaterias = new ArrayList<>();
+        ListMaterias = materias;
 //       // addRows();
 //        
 //        this.mainMenu = mainM;
@@ -113,9 +113,9 @@ public class jpMateria extends javax.swing.JPanel {
         tableMateria.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableMateria);
         if (tableMateria.getColumnModel().getColumnCount() > 0) {
-            tableMateria.getColumnModel().getColumn(0).setMinWidth(50);
-            tableMateria.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tableMateria.getColumnModel().getColumn(0).setMaxWidth(50);
+            tableMateria.getColumnModel().getColumn(0).setMinWidth(200);
+            tableMateria.getColumnModel().getColumn(0).setPreferredWidth(200);
+            tableMateria.getColumnModel().getColumn(0).setMaxWidth(200);
         }
 
         jpBtnInfo.setBackground(new java.awt.Color(247, 220, 5));
