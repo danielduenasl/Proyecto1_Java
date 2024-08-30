@@ -49,7 +49,7 @@
                           <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" pref="85" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jComboBox2" min="-2" pref="124" max="-2" attributes="0"/>
+                          <Component id="gradoComboBox" min="-2" pref="124" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel1" min="-2" pref="407" max="-2" attributes="0"/>
                   </Group>
@@ -72,7 +72,7 @@
                       <Component id="jLabel2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gradoComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="408" max="-2" attributes="0"/>
@@ -121,7 +121,7 @@
             <Property name="text" type="java.lang.String" value="Grado"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
+        <Component class="javax.swing.JComboBox" name="gradoComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">

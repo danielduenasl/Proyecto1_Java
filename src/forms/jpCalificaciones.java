@@ -4,17 +4,50 @@
  */
 package forms;
 
+import data.Calificacion;
+import data.Estudiante;
+import frames.MainMenu;
+import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author PC
  */
 public class jpCalificaciones extends javax.swing.JPanel {
 
+    private MainMenu mainMenu;
+    List<Calificacion> listcalificaciones;
     /**
      * Creates new form jpCalificaciones
      */
-    public jpCalificaciones() {
+    public jpCalificaciones(MainMenu mainM, List<Calificacion> calificaciones) {
         initComponents();
+        
+        mainMenu = mainM;
+        listcalificaciones = calificaciones;
+        addRows();
+        
+        this.mainMenu = mainM;
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTable1.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        
+    }
+    
+    private void addRows(){
+        String[] columnas = {"Carnet", "Materia", "Nota 1", "Nota 2", "Nota 3", "Nota 4"};
+       
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+        
+        for(Calificacion calif : listcalificaciones ){
+            Object[] fila = {calif.getCarnet(), calif.getMateria(), calif.getNote1(), calif.getNote2(), calif.getNote3(), calif.getNote4()};
+            modelo.addRow(fila);
+        }  
+        jTable1.setModel(modelo);
     }
 
     /**
@@ -31,7 +64,7 @@ public class jpCalificaciones extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        gradoComboBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -52,7 +85,7 @@ public class jpCalificaciones extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Grado");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primero primaria ", "Segundo primaria", "Tercero primaria", "Cuarto primaria", "Sexto primaria " }));
+        gradoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primero primaria ", "Segundo primaria", "Tercero primaria", "Cuarto primaria", "Sexto primaria " }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,7 +114,7 @@ public class jpCalificaciones extends javax.swing.JPanel {
                         .addGap(69, 69, 69)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(gradoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(245, 245, 245))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -99,7 +132,7 @@ public class jpCalificaciones extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gradoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(11, Short.MAX_VALUE))
@@ -110,8 +143,8 @@ public class jpCalificaciones extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> gradoComboBox;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

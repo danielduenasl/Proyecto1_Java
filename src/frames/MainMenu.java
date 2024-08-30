@@ -4,6 +4,7 @@
  */
 package frames;
 
+import data.Calificacion;
 import data.EventMenuSelected;
 import data.Estudiante;
 import data.Materia;
@@ -37,6 +38,7 @@ public class MainMenu extends javax.swing.JFrame {
     
     private static List<Estudiante> estudiantes;
     private static List<Materia> materias;
+    private static List<Calificacion> calificaciones;
     
     /**
      * Creates new form MainMenu
@@ -46,10 +48,12 @@ public class MainMenu extends javax.swing.JFrame {
         
         getDataEstudiante();
         getDataMateria();
+        getDataCalificaciones();
+        
         setBackground(new Color(0, 0, 0, 0));
         MainM = new jpMainMenu();
         alumnos = new jpAlumnos(this, estudiantes);
-        calif = new jpCalificaciones();
+        calif = new jpCalificaciones(this, calificaciones);
         promed = new jpPromedio();
         mejorAlum = new jpMejoresAlumnos();
         materia = new jpMateria(this, materias);
@@ -118,15 +122,6 @@ public class MainMenu extends javax.swing.JFrame {
                 Estudiante.addEstudent(estudiante);
                 //--------------
                 estudiantes.add(estudiante);
-
-                // Mostrar los datos
-                System.out.println("Carnet: " + carnet);
-                System.out.println("Grado: " + grado);
-                System.out.println("Nombre: " + nombre);
-                System.out.println("Apellido: " + apellido);
-                System.out.println("Edad: " + edad);
-                System.out.println("Sexo: " + sexo);
-                System.out.println("-------------------------");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -153,17 +148,45 @@ public class MainMenu extends javax.swing.JFrame {
                 Materia.agregarMaterias(materia);
                 
                 materias.add(materia);
-                     System.out.println(idMateria);
-                     System.out.println(nombre);
-                     System.out.println(descripcion);
-            }
-               
-                System.out.println("-------------------------");
+                }
+
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    public static void getDataCalificaciones(){
+        String archivo = new File("").getAbsolutePath() + "\\src\\data_files\\Calificaciones.txt";
+        calificaciones = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), "UTF-8"))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                // Dividir la línea por comas
+                String[] datos = linea.split(",");
+
+                 if (datos.length == 6) {
+                String carnet = datos[0];
+                String materia = datos[1];
+                float nota1 = Float.parseFloat(datos[2]);
+                float nota2 = Float.parseFloat(datos[3]);
+                float nota3 = Float.parseFloat(datos[4]);
+                float nota4 = Float.parseFloat(datos[5]);
+
+                // Crear objeto Materia y agregarlo a la lista
+                Calificacion califc = new Calificacion(carnet, materia, nota1, nota2, nota3, nota4);
+                //califc. (califc);
+                
+                calificaciones.add(califc);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
     private int x;
     private int y;
 

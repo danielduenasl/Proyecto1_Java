@@ -4,6 +4,7 @@
  */
 package forms;
 
+import data.Calificacion;
 import data.Estudiante;
 import data.Materia;
 import java.awt.BorderLayout;
@@ -38,17 +39,27 @@ public class jpMateria extends javax.swing.JPanel {
         
         ListMaterias = new ArrayList<>();
         ListMaterias = materias;
-//       // addRows();
-//        
-//        this.mainMenu = mainM;
-//        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-//        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
-//        tableMateria.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
-//        
+        addRows();
+        
+        this.mainMenu = mainM;
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tableMateria.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        
          
     }
     
-     
+     private void addRows(){
+        String[] columnas = {"ID Materia", "Nombre", "Descripcion"};
+       
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+        
+        for(Materia materia : ListMaterias ){
+            Object[] fila = {materia.getIdMateria(), materia.getNombre(), materia.getDescripcion()};
+            modelo.addRow(fila);
+        }  
+        tableMateria.setModel(modelo);
+    }
  
     /**
      * This method is called from within the constructor to initialize the form.

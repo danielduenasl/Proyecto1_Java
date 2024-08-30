@@ -82,8 +82,6 @@ public class jpAlumnos extends javax.swing.JPanel {
   
     
     private void addRows(){
-        String[] grados = {"Ingeniería en Sistemas", "Derecho", "Medicina", "Arquitectura", "Ingeniería Industrial"};
-         gradoComboBox = new JComboBox<>(grados);
         String[] columnas = {"Carnet", "Nombre", "Grado", "Apellido", "Edad"};
        
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
@@ -282,11 +280,10 @@ public class jpAlumnos extends javax.swing.JPanel {
             if (row != -1) {
                 
             alumno.setCarne((String) jtableAlumno.getValueAt(row, 0));
-            alumno.setGrado((String) jtableAlumno.getValueAt(row, 1));
-            alumno.setName((String) jtableAlumno.getValueAt(row, 2));
+            alumno.setName((String) jtableAlumno.getValueAt(row, 1));
+            alumno.setGrado((String) jtableAlumno.getValueAt(row, 2));
             alumno.setLastName((String) jtableAlumno.getValueAt(row, 3));
             alumno.setAge((Integer) jtableAlumno.getValueAt(row, 4));
-            alumno.setSexo((String) jtableAlumno.getValueAt(row, 5));
 
         }
         
