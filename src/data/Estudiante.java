@@ -15,6 +15,7 @@ public class Estudiante extends Persona {
     
     private String carne;
     private String grado;
+ 
     public static List<Estudiante> studentList = new ArrayList<>();
 
     //private List<Calificacion> calificacion;
@@ -27,6 +28,7 @@ public class Estudiante extends Persona {
 //    public void setQualifications(List<Calificacion> calificacion) {
 //        this.calificacion = calificacion;
 //    }
+   
 
     public String getCarne() {
         return carne;

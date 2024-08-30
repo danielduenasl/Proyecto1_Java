@@ -52,7 +52,7 @@ public class jpCalificaciones extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Grado");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primero primaria ", "Segundo primaria", "Tercero primaria", "Cuarto primaria", "Sexto primaria " }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

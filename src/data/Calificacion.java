@@ -16,7 +16,7 @@ public class Calificacion {
     private float note2;
     private float note3;
     private float note4;
-    private float average;
+    private float promedio;
 
     /**
      * @return the carnet
@@ -28,7 +28,7 @@ public class Calificacion {
         this.note2 = note2;
         this.note3 = note3;
         this.note4 = note4;
-        this.average = calcularPromedio();  // Calcula el promedio al crear el objeto
+        this.promedio = calcularPromedio();  // Calcula el promedio al crear el objeto
     }
     
      private float calcularPromedio() {
@@ -116,17 +116,17 @@ public class Calificacion {
     }
 
     /**
-     * @return the average
+     * @return the promedio
      */
     public float getAverage() {
-        return average;
+        return promedio;
     }
 
     /**
-     * @param average the average to set
+     * @param promedio the promedio to set
      */
-    public void setAverage(float average) {
-        this.average = average;
+    public void setAverage(float promedio) {
+        this.promedio = promedio;
     }
     
     

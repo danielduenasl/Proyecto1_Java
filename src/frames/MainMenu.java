@@ -6,6 +6,7 @@ package frames;
 
 import data.EventMenuSelected;
 import data.Estudiante;
+import data.Materia;
 import forms.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -31,6 +32,7 @@ public class MainMenu extends javax.swing.JFrame {
     private jpCalificaciones calif;
     private jpPromedio promed;
     private jpMejoresAlumnos mejorAlum;
+    private jpMateria materia;
     
     private static List<Estudiante> estudiantes;
     
@@ -41,12 +43,14 @@ public class MainMenu extends javax.swing.JFrame {
         initComponents();
         
         getDataEstudiante();
+        getDataMateria();
         setBackground(new Color(0, 0, 0, 0));
         MainM = new jpMainMenu();
         alumnos = new jpAlumnos(this, estudiantes);
         calif = new jpCalificaciones();
         promed = new jpPromedio();
         mejorAlum = new jpMejoresAlumnos();
+        //materia = new jpMateria();
         
         jpMenu1.initMoving(MainMenu.this);
         jpMenu1.addEventMenuSelected(new EventMenuSelected() {
@@ -124,7 +128,36 @@ public class MainMenu extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+    public static void getDataMateria(){
+              String archivo = new File("").getAbsolutePath() + "\\src\\data_files\\Materia.txt";
+        estudiantes = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), "UTF-8"))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                // Dividir la línea por comas
+                String[] datos = linea.split(",");
+
+                 if (datos.length == 3) {
+                int idMateria = Integer.parseInt(datos[0]);
+                String nombre = datos[1];
+                String descripcion = datos[2];
+
+                // Crear objeto Materia y agregarlo a la lista
+                Materia materia = new Materia(idMateria, nombre, descripcion);
+                Materia.agregarMaterias(materia);
+                     System.out.println(idMateria);
+                     System.out.println(nombre);
+                     System.out.println(descripcion);
+            }
+               
+                System.out.println("-------------------------");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private int x;
     private int y;
 

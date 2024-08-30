@@ -1,0 +1,10 @@
+1,Matematicas,Estudio de los numeros, las formas y los patrones.
+2,Ciencias,Naturaleza, fenomenos fisicos y biologicos.
+3,Historia,Estudio de hechos y eventos pasados.
+4,Geografia,Estudio de la Tierra, sus características y habitantes.
+5,Lenguaje y Literatura,Estudio de la lengua y de las obras literarias.
+6,Educacion Fisica,Desarrollo fisico mediante la actividad y ejercicio.
+7,Arte,Expresion creativa a traves de diversas disciplinas artísticas.
+8,Música,Estudio de los sonidos, ritmos y melodías.
+9,Computacion,Estudio de la tecnologia informatica y programacion.
+10,Ingles,Estudio de la lengua inglesa y su gramatica.
