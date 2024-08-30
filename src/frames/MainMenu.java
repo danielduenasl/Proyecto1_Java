@@ -32,7 +32,7 @@ public class MainMenu extends javax.swing.JFrame {
     private jpCalificaciones calif;
     private jpPromedio promed;
     private jpMejoresAlumnos mejorAlum;
-    private jpMateria materia;
+   
     
     private static List<Estudiante> estudiantes;
     
@@ -172,7 +172,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         jpBg = new javax.swing.JPanel();
         jpLeftMenu = new javax.swing.JPanel();
-        jpMenu1 = new forms.jpMenu();
         jpContent = new javax.swing.JPanel();
         jpBarHeader = new javax.swing.JPanel();
         jpBarClose = new javax.swing.JPanel();
@@ -195,8 +194,6 @@ public class MainMenu extends javax.swing.JFrame {
         jpLeftMenu.setMinimumSize(new java.awt.Dimension(200, 100));
         jpLeftMenu.setPreferredSize(new java.awt.Dimension(210, 484));
         jpLeftMenu.setLayout(new java.awt.BorderLayout());
-        jpLeftMenu.add(jpMenu1, java.awt.BorderLayout.CENTER);
-
         jpBg.add(jpLeftMenu, java.awt.BorderLayout.LINE_START);
 
         jpContent.setBackground(new java.awt.Color(204, 204, 204));
@@ -396,7 +393,6 @@ public class MainMenu extends javax.swing.JFrame {
     public javax.swing.JPanel jpContent;
     private javax.swing.JPanel jpLeftMenu;
     private javax.swing.JPanel jpMax;
-    private forms.jpMenu jpMenu1;
     private javax.swing.JPanel jpMin;
     // End of variables declaration//GEN-END:variables
 }
