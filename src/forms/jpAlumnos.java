@@ -294,7 +294,7 @@ public class jpAlumnos extends javax.swing.JPanel {
 
         }
         
-        jpInfoAlumno infoAlumno = new jpInfoAlumno(alumno);
+        jpInfoAlumno infoAlumno = new jpInfoAlumno(mainMenu, alumno, Listcalificaciones);
         infoAlumno.setSize(760, 606);
         infoAlumno.setLocation(0, 0);
 

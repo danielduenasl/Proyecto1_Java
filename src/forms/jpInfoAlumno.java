@@ -4,7 +4,11 @@
  */
 package forms;
 
+import data.Calificacion;
 import data.Estudiante;
+import static forms.jpAlumnos.obtenerCalificacionesPorCarnet;
+import frames.MainMenu;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.List;
 
@@ -14,11 +18,16 @@ import java.util.List;
  */
 public class jpInfoAlumno extends javax.swing.JPanel {
 
+    private MainMenu mainMenu;
+    List<Calificacion> Listcalificaiones;
     /**
      * Creates new form jpInfoAlumno
      */
-    public jpInfoAlumno(Estudiante alumno) {
+    public jpInfoAlumno(MainMenu mainM, Estudiante alumno, List<Calificacion> calificaciones) {
         initComponents();
+        
+        mainMenu = mainM;       
+        Listcalificaiones = calificaciones;
         
         jTextNombre.setText(alumno.getName());
         jTextApellido.setText(alumno.getLastName());
@@ -210,21 +219,24 @@ public class jpInfoAlumno extends javax.swing.JPanel {
 
     private void jlBtnInfo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBtnInfo1MouseClicked
 
-//        jpNotasAlumno notasAlumno = new jpNotasAlumno();
-//        notasAlumno.setSize(760, 606);
-//        notasAlumno.setLocation(0, 0);
-//
-//        jpContentMain contentMain = new jpContentMain();
-//        contentMain.removeAll();
-//        contentMain.add(mainMenu.jpBarHeader, BorderLayout.NORTH);
-//        contentMain.add(notasAlumno, BorderLayout.CENTER);
-//        contentMain.revalidate();
-//        contentMain.repaint();
-//
-//        mainMenu.jpContent.removeAll();
-//        mainMenu.jpContent.add(contentMain, BorderLayout.CENTER);
-//        mainMenu.jpContent.revalidate();
-//        mainMenu.jpContent.repaint();
+        String Carnet = txtCarnet.getText();
+        List<Calificacion> calif = obtenerCalificacionesPorCarnet(Listcalificaiones, Carnet);
+        
+        jpNotasAlumno notasAlumno = new jpNotasAlumno(mainMenu, calif);
+        notasAlumno.setSize(760, 606);
+        notasAlumno.setLocation(0, 0);
+
+        jpContentMain contentMain = new jpContentMain();
+        contentMain.removeAll();
+        contentMain.add(mainMenu.jpBarHeader, BorderLayout.NORTH);
+        contentMain.add(notasAlumno, BorderLayout.CENTER);
+        contentMain.revalidate();
+        contentMain.repaint();
+        
+        mainMenu.jpContent.removeAll();
+        mainMenu.jpContent.add(contentMain, BorderLayout.CENTER);
+        mainMenu.jpContent.revalidate();
+        mainMenu.jpContent.repaint();
     }//GEN-LAST:event_jlBtnInfo1MouseClicked
 
     private void jlBtnInfo1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBtnInfo1MouseEntered
