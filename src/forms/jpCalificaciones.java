@@ -7,7 +7,9 @@ package forms;
 import data.Calificacion;
 import data.Estudiante;
 import frames.MainMenu;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -20,15 +22,17 @@ import javax.swing.table.DefaultTableModel;
 public class jpCalificaciones extends javax.swing.JPanel {
 
     private MainMenu mainMenu;
-    List<Calificacion> listcalificaciones;
+    private List<Calificacion> listcalificaciones;
+    private List<Estudiante> ListEstudiantes;
     /**
      * Creates new form jpCalificaciones
      */
-    public jpCalificaciones(MainMenu mainM, List<Calificacion> calificaciones) {
+    public jpCalificaciones(MainMenu mainM, List<Calificacion> calificaciones, List<Estudiante> estudiantes) {
         initComponents();
         
         mainMenu = mainM;
         listcalificaciones = calificaciones;
+        ListEstudiantes = estudiantes;
         addRows();
         
         this.mainMenu = mainM;
@@ -39,12 +43,22 @@ public class jpCalificaciones extends javax.swing.JPanel {
     }
     
     private void addRows(){
-        String[] columnas = {"Carnet", "Materia", "Nota 1", "Nota 2", "Nota 3", "Nota 4"};
-       
+        String[] columnas = {"Carnet", "Nombre", "Materia", "Nota 1", "Nota 2", "Nota 3", "Nota 4"};
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
         
         for(Calificacion calif : listcalificaciones ){
-            Object[] fila = {calif.getCarnet(), calif.getMateria(), calif.getNote1(), calif.getNote2(), calif.getNote3(), calif.getNote4()};
+            
+            String nombreEstudiante = "";
+        
+            // Buscamos en la lista de estudiantes el que coincida con el carnet
+            for(Estudiante est : ListEstudiantes){
+                if(est.getCarne().equals(calif.getCarnet())){
+                    nombreEstudiante = est.getName()+ " " + est.getLastName();
+                    break; // Encontramos el estudiante, podemos salir del loop
+                }
+            }
+        
+            Object[] fila = {calif.getCarnet(), nombreEstudiante, calif.getMateria(), calif.getNote1(), calif.getNote2(), calif.getNote3(), calif.getNote4()};
             modelo.addRow(fila);
         }  
         jTable1.setModel(modelo);
@@ -62,7 +76,7 @@ public class jpCalificaciones extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        materiaComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         gradoComboBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -80,12 +94,22 @@ public class jpCalificaciones extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel2.setText("Materia");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matematicas", "Ingles", "Lenguaje" }));
+        materiaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matemáticas", "Ciencias", "Historia", "Lenguaje", "Geografía" }));
+        materiaComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                materiaComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Grado");
 
-        gradoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primero primaria ", "Segundo primaria", "Tercero primaria", "Cuarto primaria", "Sexto primaria " }));
+        gradoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primero primaria", "Segundo primaria", "Tercero primaria", "Cuarto primaria", "Sexto primaria" }));
+        gradoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gradoComboBoxActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,7 +134,7 @@ public class jpCalificaciones extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(materiaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,7 +154,7 @@ public class jpCalificaciones extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(materiaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gradoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -141,15 +165,112 @@ public class jpCalificaciones extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void gradoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradoComboBoxActionPerformed
+            // Obtener los valores seleccionados de los ComboBox
+        String materiaSeleccionada = (String) materiaComboBox.getSelectedItem();
+        String gradoSeleccionado = (String) gradoComboBox.getSelectedItem();
+
+        // Filtrar la lista de calificaciones por materia y grado
+        List<Calificacion> ListCalif = obtenerListMateria(listcalificaciones, materiaSeleccionada, gradoSeleccionado, ListEstudiantes);
+
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setRowCount(0);  // Limpiar la tabla antes de agregar nuevas filas
+
+        // Iterar sobre la lista filtrada de calificaciones
+        for (Calificacion calif : ListCalif) {
+            String nombreEstudiante = "";
+
+            // Buscar el estudiante correspondiente al carnet en la lista de estudiantes
+            for (Estudiante est : ListEstudiantes) {
+                if (est.getCarne().equals(calif.getCarnet())) { // Asegúrate de usar el método correcto
+                    nombreEstudiante = est.getName()+ " " + est.getLastName(); // Usa los nombres correctos de los métodos
+                    break; // Salimos del loop cuando encontramos al estudiante
+                }
+            }
+
+            // Crear un objeto con los datos del estudiante y las calificaciones
+            Object[] fila = {
+                calif.getCarnet(),
+                nombreEstudiante,
+                calif.getMateria(),
+                calif.getNote1(), 
+                calif.getNote2(), 
+                calif.getNote3(), 
+                calif.getNote4()
+            };
+
+            // Agregar la fila al modelo de la tabla
+            modelo.addRow(fila);
+        }
+    }//GEN-LAST:event_gradoComboBoxActionPerformed
+
+    private void materiaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materiaComboBoxActionPerformed
+            // Obtener los valores seleccionados de los ComboBox
+        String materiaSeleccionada = (String) materiaComboBox.getSelectedItem();
+        String gradoSeleccionado = (String) gradoComboBox.getSelectedItem();
+
+        // Filtrar la lista de calificaciones por materia y grado
+        List<Calificacion> ListCalif = obtenerListMateria(listcalificaciones, materiaSeleccionada, gradoSeleccionado, ListEstudiantes);
+
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setRowCount(0);  // Limpiar la tabla antes de agregar nuevas filas
+
+        // Iterar sobre la lista filtrada de calificaciones
+        for (Calificacion calif : ListCalif) {
+            String nombreEstudiante = "";
+
+            // Buscar el estudiante correspondiente al carnet en la lista de estudiantes
+            for (Estudiante est : ListEstudiantes) {
+                if (est.getCarne().equals(calif.getCarnet())) { // Asegúrate de usar el método correcto
+                    nombreEstudiante = est.getName()+ " " + est.getLastName(); // Usa los nombres correctos de los métodos
+                    break; // Salimos del loop cuando encontramos al estudiante
+                }
+            }
+
+            // Crear un objeto con los datos del estudiante y las calificaciones
+            Object[] fila = {
+                calif.getCarnet(),
+                nombreEstudiante,
+                calif.getMateria(),
+                calif.getNote1(), 
+                calif.getNote2(), 
+                calif.getNote3(), 
+                calif.getNote4()
+            };
+
+            // Agregar la fila al modelo de la tabla
+            modelo.addRow(fila);
+        }
+    }//GEN-LAST:event_materiaComboBoxActionPerformed
+
+    public static List<Calificacion> obtenerListMateria(List<Calificacion> calificaciones, String materia, 
+            String grado, List<Estudiante> estudiantes) {
+        return calificaciones.stream()
+                .filter(c -> c.getMateria().equals(materia))  // Filtra por materia
+                .filter(c -> {
+                // Buscar el estudiante correspondiente a la calificación
+                Estudiante estudiante = estudiantes.stream()
+                        .filter(e -> e.getCarne().equals(c.getCarnet()))
+                        .findFirst()
+                        .orElse(null);
+                
+                    // Verificar si el estudiante existe y si su grado coincide
+                    return estudiante != null && estudiante.getGrado().equals(grado);
+                })
+                .sorted(Comparator.comparing(Calificacion::getAverage).reversed())  // Ordena por promedio descendente
+                .collect(Collectors.toList());  // Colecta en una lista
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> gradoComboBox;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<String> materiaComboBox;
     // End of variables declaration//GEN-END:variables
 }

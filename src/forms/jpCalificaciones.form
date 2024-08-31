@@ -45,7 +45,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" pref="70" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" pref="117" max="-2" attributes="0"/>
+                          <Component id="materiaComboBox" min="-2" pref="117" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" pref="85" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -70,7 +70,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="materiaComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="gradoComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -98,16 +98,21 @@
             <Property name="text" type="java.lang.String" value="Materia"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="materiaComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Matematicas"/>
-                <StringItem index="1" value="Ingles"/>
-                <StringItem index="2" value="Lenguaje"/>
+              <StringArray count="5">
+                <StringItem index="0" value="Matem&#xe1;ticas"/>
+                <StringItem index="1" value="Ciencias"/>
+                <StringItem index="2" value="Historia"/>
+                <StringItem index="3" value="Lenguaje"/>
+                <StringItem index="4" value="Geograf&#xed;a"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="materiaComboBoxActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -124,14 +129,17 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
-                <StringItem index="0" value="Primero primaria "/>
+                <StringItem index="0" value="Primero primaria"/>
                 <StringItem index="1" value="Segundo primaria"/>
                 <StringItem index="2" value="Tercero primaria"/>
                 <StringItem index="3" value="Cuarto primaria"/>
-                <StringItem index="4" value="Sexto primaria "/>
+                <StringItem index="4" value="Sexto primaria"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gradoComboBoxActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
