@@ -7,6 +7,7 @@ package forms;
 import data.Calificacion;
 import data.Estudiante;
 import frames.MainMenu;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -36,6 +37,21 @@ public class jpNotasAlumno extends javax.swing.JPanel {
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         jTable1.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
         
+        float promedio = 0;
+        for (Calificacion calif : Listcalificaiones){
+            promedio += calif.getAverage();
+        }
+        
+        promedio = (promedio / 5);
+        txtPromedio.setText(String.valueOf(promedio));
+        if (promedio >= 60){
+            jpAprove.setBackground(new Color(16, 139, 9));
+            jlAprove.setText("APROBADO");
+        } else {
+            jpAprove.setBackground(new Color(139, 9, 9));
+            jlAprove.setText("NO APROBADO");
+        }
+        
     }
     
     private void addRows(List<Calificacion> calificaciones){
@@ -63,6 +79,10 @@ public class jpNotasAlumno extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        txtPromedio = new javax.swing.JTextField();
+        jpAprove = new javax.swing.JPanel();
+        jlAprove = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -85,6 +105,27 @@ public class jpNotasAlumno extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("PROMEDIO");
+
+        txtPromedio.setMinimumSize(new java.awt.Dimension(100, 50));
+        txtPromedio.setPreferredSize(new java.awt.Dimension(100, 50));
+        txtPromedio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPromedioActionPerformed(evt);
+            }
+        });
+
+        jpAprove.setMinimumSize(new java.awt.Dimension(130, 50));
+        jpAprove.setPreferredSize(new java.awt.Dimension(130, 50));
+        jpAprove.setLayout(new java.awt.BorderLayout());
+
+        jlAprove.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jlAprove.setForeground(new java.awt.Color(255, 255, 255));
+        jlAprove.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jpAprove.add(jlAprove, java.awt.BorderLayout.CENTER);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,6 +133,12 @@ public class jpNotasAlumno extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jpAprove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
@@ -102,18 +149,31 @@ public class jpNotasAlumno extends javax.swing.JPanel {
                 .addGap(52, 52, 52)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpAprove, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPromedioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPromedioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jlAprove;
+    private javax.swing.JPanel jpAprove;
+    private javax.swing.JTextField txtPromedio;
     // End of variables declaration//GEN-END:variables
 }
