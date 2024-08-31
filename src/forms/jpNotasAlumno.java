@@ -4,17 +4,50 @@
  */
 package forms;
 
+import data.Calificacion;
+import data.Estudiante;
+import frames.MainMenu;
+import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Daniel
  */
 public class jpNotasAlumno extends javax.swing.JPanel {
 
+    private MainMenu mainMenu;
+    List<Calificacion> Listcalificaiones;
     /**
      * Creates new form jpNotasAlumno
      */
-    public jpNotasAlumno() {
+    public jpNotasAlumno(MainMenu mainM, List<Calificacion> calificaciones) {
         initComponents();
+        
+        mainMenu = mainM;
+        
+        Listcalificaiones = calificaciones;
+        addRows(Listcalificaiones);
+        
+        this.mainMenu = mainM;
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTable1.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        
+    }
+    
+    private void addRows(List<Calificacion> calificaciones){
+        String[] columnas = {"Carnet", "Materia", "Nota 1", "Nota 2", "Nota 3", "Nota 4", "Promedio"};
+       
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+        
+        for(Calificacion calif : calificaciones ){
+            Object[] fila = {calif.getCarnet(), calif.getMateria(), calif.getNote1(), calif.getNote2(), calif.getNote3(), calif.getNote4(), calif.getAverage()};
+            modelo.addRow(fila);
+        }  
+        jTable1.setModel(modelo);
     }
 
     /**

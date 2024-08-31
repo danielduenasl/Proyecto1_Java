@@ -52,7 +52,7 @@ public class MainMenu extends javax.swing.JFrame {
         
         setBackground(new Color(0, 0, 0, 0));
         MainM = new jpMainMenu();
-        alumnos = new jpAlumnos(this, estudiantes);
+        alumnos = new jpAlumnos(this, estudiantes, calificaciones);
         calif = new jpCalificaciones(this, calificaciones);
         promed = new jpPromedio();
         mejorAlum = new jpMejoresAlumnos(this, calificaciones);

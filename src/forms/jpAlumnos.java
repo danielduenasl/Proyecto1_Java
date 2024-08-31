@@ -4,6 +4,7 @@
  */
 package forms;
 
+import data.Calificacion;
 import data.Estudiante;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -26,14 +27,16 @@ public class jpAlumnos extends javax.swing.JPanel {
     private List<Estudiante> ListEstudiantes;
     private JComboBox<String> gradoComboBox;   
     private DefaultTableModel tableModel;
+    private List<Calificacion> Listcalificaciones;
     /**
      * Creates new form jpAlumnos
      */
-    public jpAlumnos(MainMenu mainM, List<Estudiante> estudiantes) {
+    public jpAlumnos(MainMenu mainM, List<Estudiante> estudiantes, List<Calificacion> calificaciones) {
         initComponents();
         
         ListEstudiantes = new ArrayList<>();
         ListEstudiantes = estudiantes;
+        Listcalificaciones = calificaciones;
         addRows();
         
         this.mainMenu = mainM;
@@ -75,9 +78,6 @@ public class jpAlumnos extends javax.swing.JPanel {
         }
     }
 
-         //actualizarTabla(gradoSeleccionado);
-        // Actualiza la tabla con los estudiantes correspondientes
-       // actualizarTabla(gradoSeleccionado);
     }
   
     
@@ -91,6 +91,12 @@ public class jpAlumnos extends javax.swing.JPanel {
             modelo.addRow(fila);
         }  
         jtableAlumno.setModel(modelo);
+    }
+    
+    public static List<Calificacion> obtenerCalificacionesPorCarnet(List<Calificacion> calificaciones, String carnet) {
+        return calificaciones.stream()
+                .filter(c -> c.getCarnet().equals(carnet))  // Filtra por carnet
+                .collect(Collectors.toList());  // Colecta en una lista
     }
     
     /**
@@ -308,7 +314,14 @@ public class jpAlumnos extends javax.swing.JPanel {
 
     private void jlBtnInfo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBtnInfo1MouseClicked
 
-        jpNotasAlumno notasAlumno = new jpNotasAlumno();
+        Estudiante alumno = new Estudiante();
+        int row = jtableAlumno.getSelectedRow();
+            if (row != -1) {        
+            alumno.setCarne((String) jtableAlumno.getValueAt(row, 0));
+            }
+        List<Calificacion> calif = obtenerCalificacionesPorCarnet(Listcalificaciones, alumno.getCarne());
+        
+        jpNotasAlumno notasAlumno = new jpNotasAlumno(mainMenu, calif);
         notasAlumno.setSize(760, 606);
         notasAlumno.setLocation(0, 0);
 
