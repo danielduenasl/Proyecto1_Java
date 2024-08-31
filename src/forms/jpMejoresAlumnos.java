@@ -4,17 +4,73 @@
  */
 package forms;
 
+import data.Calificacion;
+import data.Estudiante;
+import frames.MainMenu;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author PC
  */
 public class jpMejoresAlumnos extends javax.swing.JPanel {
 
+    private MainMenu mainMenu;
+    List<Calificacion> Listcalificaiones;
+    List<Calificacion> top5Matematicas;
+    List<Calificacion> top5Ciencias;
+    List<Calificacion> top5Historia;
+    List<Calificacion> top5Lenguaje;
+    List<Calificacion> top5Geografia;
+
     /**
      * Creates new form jpMejoresAlumnos
      */
-    public jpMejoresAlumnos() {
+    public jpMejoresAlumnos(MainMenu mainM, List<Calificacion> calificaiones) {
         initComponents();
+        
+        mainMenu = mainM;
+        
+        Listcalificaiones = calificaiones;
+        top5Matematicas = obtenerTop5PorMateria(Listcalificaiones, "Matemáticas");
+        top5Ciencias = obtenerTop5PorMateria(Listcalificaiones, "Ciencias");
+        top5Historia = obtenerTop5PorMateria(Listcalificaiones, "Historia");
+        top5Lenguaje = obtenerTop5PorMateria(Listcalificaiones, "Lenguaje");
+        top5Geografia = obtenerTop5PorMateria(Listcalificaiones, "Geografía");
+        
+        addRows(Listcalificaiones);
+        
+        this.mainMenu = mainM;
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTable1.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        
+        
+    }
+    
+    public static List<Calificacion> obtenerTop5PorMateria(List<Calificacion> calificaciones, String materia) {
+        return calificaciones.stream()
+                .filter(c -> c.getMateria().equals(materia))  // Filtra por materia
+                .sorted(Comparator.comparing(Calificacion::getAverage).reversed())  // Ordena por promedio descendente
+                .limit(5)  // Toma los primeros 5
+                .collect(Collectors.toList());  // Colecta en una lista
+    }
+    
+    private void addRows(List<Calificacion> calificaciones){
+        String[] columnas = {"Carnet", "Materia", "Nota 1", "Nota 2", "Nota 3", "Nota 4", "Promedio"};
+       
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+        
+        for(Calificacion calif : calificaciones ){
+            Object[] fila = {calif.getCarnet(), calif.getMateria(), calif.getNote1(), calif.getNote2(), calif.getNote3(), calif.getNote4()};
+            modelo.addRow(fila);
+        }  
+        jTable1.setModel(modelo);
     }
 
     /**
@@ -43,9 +99,14 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("GRADO");
+        jLabel2.setText("MATERIA");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matemáticas", "Ciencias", "Historia", "Lenguaje", "Geografía" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,16 +127,16 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addContainerGap(308, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
-                .addContainerGap(308, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,9 +145,9 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
@@ -95,6 +156,55 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // Obtén el grado seleccionado
+        String materiaselect = (String) jComboBox1.getSelectedItem();
+         System.out.println(materiaselect);
+         
+         if (materiaselect.equals("Matemáticas"))
+         {
+             mostrardata(materiaselect, top5Matematicas);
+         } else if (materiaselect.equals("Ciencias"))
+         {
+             mostrardata(materiaselect, top5Ciencias);
+         } else if (materiaselect.equals("Historia"))
+         {
+             mostrardata(materiaselect, top5Historia);
+         } else if (materiaselect.equals("Lenguaje"))
+         {
+             mostrardata(materiaselect, top5Lenguaje);
+         } else if (materiaselect.equals("Geografía"))
+         {
+             mostrardata(materiaselect, top5Geografia);
+         }
+    
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void mostrardata(String materiaselect, List<Calificacion> calificaciones){
+    
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+ 
+            modelo.setRowCount(0);
+            
+        for (Calificacion califc : calificaciones) {
+           if (califc.getMateria().equalsIgnoreCase(materiaselect)) {
+               // Crear un objeto con los datos del estudiante
+               Object[] fila = {
+                   califc.getCarnet(),
+                   califc.getMateria(),
+                   califc.getNote1(),
+                   califc.getNote2(),
+                   califc.getNote3(),
+                   califc.getNote4(),
+                   califc.getAverage(),
+               };
+
+            // Agregar la fila al modelo de la tabla
+            modelo.addRow(fila);
+            }
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
