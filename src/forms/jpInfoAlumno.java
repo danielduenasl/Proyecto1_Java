@@ -24,6 +24,13 @@ public class jpInfoAlumno extends javax.swing.JPanel {
         jTextApellido.setText(alumno.getLastName());
         jTextEdad.setText(Integer.toString(alumno.getAge()));
         txtCarnet.setText(alumno.getCarne());
+        if (alumno.getSexo().equals("M"))
+        {
+            jCBXGenero.setSelectedIndex(0);
+        } else { 
+            jCBXGenero.setSelectedIndex(1);
+        }
+        
         
     }
 
@@ -197,10 +204,6 @@ public class jpInfoAlumno extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextApellidoActionPerformed
 
-    private void jCBXGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBXGeneroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBXGeneroActionPerformed
-
     private void txtCarnetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarnetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCarnetActionPerformed
@@ -231,6 +234,10 @@ public class jpInfoAlumno extends javax.swing.JPanel {
     private void jlBtnInfo1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBtnInfo1MouseExited
         jpBtnNotas.setBackground(new Color (247, 220, 5));
     }//GEN-LAST:event_jlBtnInfo1MouseExited
+
+    private void jCBXGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBXGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBXGeneroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

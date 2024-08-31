@@ -66,7 +66,7 @@ public class jpAlumnos extends javax.swing.JPanel {
                    estudiante.getLastName(),
 
                    estudiante.getAge(),
-                 //  estudiante.getSexo(),
+                   estudiante.getSexo(),
                   // estudiante.getSize()
                };
 
@@ -82,12 +82,12 @@ public class jpAlumnos extends javax.swing.JPanel {
   
     
     private void addRows(){
-        String[] columnas = {"Carnet", "Nombre", "Grado", "Apellido", "Edad"};
+        String[] columnas = {"Carnet", "Nombre", "Grado", "Apellido", "Edad", "Genero"};
        
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
         
         for(Estudiante student : ListEstudiantes ){
-            Object[] fila = {student.getCarne(), student.getName(), student.getGrado(), student.getLastName(), student.getAge()};
+            Object[] fila = {student.getCarne(), student.getName(), student.getGrado(), student.getLastName(), student.getAge(), student.getSexo()};
             modelo.addRow(fila);
         }  
         jtableAlumno.setModel(modelo);
@@ -284,6 +284,7 @@ public class jpAlumnos extends javax.swing.JPanel {
             alumno.setGrado((String) jtableAlumno.getValueAt(row, 2));
             alumno.setLastName((String) jtableAlumno.getValueAt(row, 3));
             alumno.setAge((Integer) jtableAlumno.getValueAt(row, 4));
+            alumno.setSexo((String) jtableAlumno.getValueAt(row, 5));
 
         }
         
