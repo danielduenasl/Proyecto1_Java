@@ -1,30 +1,266 @@
-20201010,Primero primaria,Juan,Rosales,20,M
-20201011,Segundo primaria,Ana,Gutierrez,21,F
-20201012,Quinto primaria,Carlos,Solis,22,M
-20201013,Primero primaria,Alvaro,Pinto,19,F
-20201014,Segundo primaria,Pedro,Garcia,23,M
-20201015,Tercero primaria,Marta,Tzic,20,F
-20201016,Quinto primaria,Jaime,Rojas,24,M
-20201017,Sexto primaria,Rivas,Ortiz,21,F
-20201018,Primero primaria,Manuel,Morales,22,M
-20201019,Segundo primaria,Laura,Casas,22,F
-20201020,Tercero primaria,Luis,Flores,21,M
-20201021,Cuarto primaria,Isabel,Lemus,20,F
-20201022,Quinto primaria,Diego,Marroquín,23,M
-20201023,Sexto primaria,Sofía,Cruz,19,F
-20201024,Primero primaria,Ricardo,Mendoza,24,M
-20201025,Segundo primaria,Elena,López,20,F
-20201026,Tercero primaria,Fernando,Chavez,21,M
-20201027,Cuarto primaria,Carmen,Martínez,22,F
-20201028,Quinto primaria,Daniel,Santizo,23,M
-20201029,Sexto primaria,Patricia,Guzmán,22,F
-20201030,Primero primaria,Sebastián,Pérez,20,M
-20201031,Segundo primaria,Alejandro,Ramírez,21,M
-20201032,Tercero primaria,Camila,Fernández,22,F
-20201033,Cuarto primaria,Roberto,García,23,M
-20201034,Quinto primaria,Valeria,Ortega,24,F
-20201035,Sexto primaria,Francisco,Méndez,19,M
-20201036,Primero primaria,Paola,Cruz,20,F
-20201037,Segundo primaria,Nicolás,Gómez,22,M
-20201038,Tercero primaria,Andrea,Hernández,21,F
-20201039,Cuarto primaria,Ramón,Navarro,23,M
+20201010,Primero primaria,Juan,Rosales,6,M
+20201011,Segundo primaria,Ana,Gutierrez,7,F
+20201012,Quinto primaria,Carlos,Solis,10,M
+20201013,Primero primaria,Alvaro,Pinto,6,M
+20201014,Segundo primaria,Pedro,Garcia,8,M
+20201015,Tercero primaria,Marta,Tzic,8,F
+20201016,Quinto primaria,Jaime,Rojas,11,M
+20201017,Sexto primaria,Rivas,Ortiz,12,F
+20201018,Primero primaria,Manuel,Morales,7,M
+20201019,Segundo primaria,Laura,Casas,7,F
+20201020,Tercero primaria,Luis,Flores,9,M
+20201021,Cuarto primaria,Isabel,Lemus,9,F
+20201022,Quinto primaria,Diego,Marroquín,10,M
+20201023,Sexto primaria,Sofía,Cruz,12,F
+20201024,Primero primaria,Ricardo,Mendoza,6,M
+20201025,Segundo primaria,Elena,López,7,F
+20201026,Tercero primaria,Fernando,Chavez,8,M
+20201027,Cuarto primaria,Carmen,Martínez,10,F
+20201028,Quinto primaria,Daniel,Santizo,11,M
+20201029,Sexto primaria,Patricia,Guzmán,11,F
+20201030,Primero primaria,Sebastián,Pérez,7,M
+20201031,Segundo primaria,Alejandro,Ramírez,8,M
+20201032,Tercero primaria,Camila,Fernández,9,F
+20201033,Cuarto primaria,Roberto,García,10,M
+20201034,Quinto primaria,Valeria,Ortega,11,F
+20201035,Sexto primaria,Francisco,Méndez,12,M
+20201036,Primero primaria,Paola,Cruz,6,F
+20201037,Segundo primaria,Nicolás,Gómez,8,M
+20201038,Tercero primaria,Andrea,Hernández,9,F
+20201039,Cuarto primaria,Ramón,Navarro,10,M
+20201040,Primero primaria,Emilio,Santos,7,M
+20201041,Segundo primaria,Lía,Reyes,7,F
+20201042,Tercero primaria,Tomas,Diaz,8,M
+20201043,Cuarto primaria,Renata,Carrillo,9,F
+20201044,Quinto primaria,Eduardo,Ortiz,11,M
+20201045,Sexto primaria,Sara,Campos,12,F
+20201046,Primero primaria,Jorge,Ruiz,6,M
+20201047,Segundo primaria,Lucía,Méndez,8,F
+20201048,Tercero primaria,Iván,Cortes,9,M
+20201049,Cuarto primaria,Silvia,Núñez,10,F
+20201050,Quinto primaria,Leonardo,Prieto,11,M
+20201051,Sexto primaria,Julia,Soto,12,F
+20201052,Primero primaria,Alma,Ramírez,7,F
+20201053,Segundo primaria,Andrés,Moreno,8,M
+20201054,Tercero primaria,Raúl,Pineda,9,M
+20201055,Cuarto primaria,Inés,Fernández,10,F
+20201056,Quinto primaria,Clara,Martínez,11,F
+20201057,Sexto primaria,Marcos,Alvarado,12,M
+20201058,Primero primaria,Daniela,Sandoval,6,F
+20201059,Segundo primaria,Ricardo,Peña,7,M
+20201060,Tercero primaria,Fernanda,Soler,9,F
+20201061,Cuarto primaria,Antonio,Blanco,10,M
+20201062,Quinto primaria,Alejandra,Salazar,11,F
+20201063,Sexto primaria,Luciano,López,12,M
+20201064,Primero primaria,Violeta,Torres,7,F
+20201065,Segundo primaria,Matías,González,8,M
+20201066,Tercero primaria,Elena,Bustos,9,F
+20201067,Cuarto primaria,Juan,Aguilar,10,M
+20201068,Quinto primaria,María,Benitez,11,F
+20201069,Sexto primaria,Federico,Castro,12,M
+20201070,Primero primaria,Cristina,Garza,6,F
+20201071,Segundo primaria,David,Silva,7,M
+20201072,Tercero primaria,Nuria,Mendoza,8,F
+20201073,Cuarto primaria,Fernando,Montoya,10,M
+20201074,Quinto primaria,Isabel,Ramos,11,F
+20201075,Sexto primaria,José,Suárez,12,M
+20201040,Matemáticas,80.0,83.5,86.0,84.5
+20201040,Ciencias,87.0,85.5,88.5,86.0
+20201040,Historia,73.0,71.5,74.0,75.5
+20201040,Lenguaje,92.0,90.5,93.0,91.5
+20201040,Geografía,81.0,79.5,82.5,80.0
+20201041,Matemáticas,78.5,80.0,82.5,81.0
+20201041,Ciencias,84.0,82.5,85.0,83.5
+20201041,Historia,72.0,73.5,71.0,70.5
+20201041,Lenguaje,89.5,88.0,90.0,91.5
+20201041,Geografía,80.5,82.0,81.0,83.5
+20201042,Matemáticas,82.0,84.5,86.0,83.5
+20201042,Ciencias,88.5,87.0,89.0,86.5
+20201042,Historia,75.0,73.5,76.0,74.5
+20201042,Lenguaje,91.0,89.5,92.0,90.5
+20201042,Geografía,79.0,80.5,82.0,81.5
+20201043,Matemáticas,79.5,77.0,80.0,81.5
+20201043,Ciencias,83.0,84.5,85.0,82.5
+20201043,Historia,70.5,69.0,72.0,71.5
+20201043,Lenguaje,87.0,85.5,88.0,89.5
+20201043,Geografía,78.0,79.5,77.0,80.5
+20201044,Matemáticas,81.0,83.5,84.0,82.5
+20201044,Ciencias,85.5,84.0,87.0,86.5
+20201044,Historia,72.5,74.0,71.5,73.0
+20201044,Lenguaje,90.0,88.5,91.0,92.5
+20201044,Geografía,82.0,81.5,83.0,80.0
+20201045,Matemáticas,80.5,82.0,84.5,83.0
+20201045,Ciencias,87.0,85.5,88.0,86.5
+20201045,Historia,75.0,76.5,74.0,77.5
+20201045,Lenguaje,91.5,90.0,93.0,92.5
+20201045,Geografía,81.0,79.5,82.0,80.5
+20201046,Matemáticas,79.0,81.5,83.0,80.5
+20201046,Ciencias,84.5,83.0,85.5,82.0
+20201046,Historia,71.5,70.0,73.0,72.5
+20201046,Lenguaje,88.0,86.5,89.0,90.5
+20201046,Geografía,80.5,82.0,79.5,78.0
+20201047,Matemáticas,77.5,80.0,82.5,81.0
+20201047,Ciencias,85.0,83.5,86.0,84.5
+20201047,Historia,70.0,72.5,71.0,73.5
+20201047,Lenguaje,89.5,88.0,91.0,90.5
+20201047,Geografía,79.0,81.5,80.0,78.5
+20201048,Matemáticas,82.5,81.0,83.5,84.0
+20201048,Ciencias,88.0,86.5,89.0,87.5
+20201048,Historia,75.5,74.0,76.5,77.0
+20201048,Lenguaje,92.0,90.5,93.0,91.5
+20201048,Geografía,80.0,82.5,81.0,79.5
+20201049,Matemáticas,80.0,82.5,84.0,83.5
+20201049,Ciencias,87.5,85.0,88.5,86.0
+20201049,Historia,72.0,73.5,75.0,74.5
+20201049,Lenguaje,91.0,89.5,92.0,93.5
+20201049,Geografía,81.5,80.0,82.0,81.0
+20201050,Matemáticas,78.5,80.0,82.5,81.0
+20201050,Ciencias,84.0,85.5,87.0,83.5
+20201050,Historia,73.0,70.5,74.0,72.5
+20201050,Lenguaje,88.5,87.0,89.0,90.5
+20201050,Geografía,79.0,78.5,81.0,80.5
+20201051,Matemáticas,81.0,83.5,85.0,82.5
+20201051,Ciencias,86.5,84.0,87.5,88.0
+20201051,Historia,74.5,76.0,78.5,75.0
+20201051,Lenguaje,90.0,91.5,89.0,92.5
+20201051,Geografía,80.5,79.0,81.5,82.0
+20201052,Matemáticas,79.5,78.0,80.5,82.0
+20201052,Ciencias,85.5,84.0,86.5,87.0
+20201052,Historia,71.5,70.0,73.5,72.0
+20201052,Lenguaje,89.0,88.5,90.0,91.5
+20201052,Geografía,78.0,80.5,81.0,79.5
+20201053,Matemáticas,80.5,82.0,84.5,83.0
+20201053,Ciencias,87.0,85.5,88.0,86.5
+20201053,Historia,75.0,73.5,76.0,74.5
+20201053,Lenguaje,91.0,89.5,92.0,90.5
+20201053,Geografía,80.0,82.5,81.0,79.5
+20201054,Matemáticas,78.0,80.5,82.0,81.5
+20201054,Ciencias,84.5,83.0,85.5,84.0
+20201054,Historia,73.0,71.5,74.0,72.5
+20201054,Lenguaje,88.5,87.0,89.5,90.0
+20201054,Geografía,79.5,81.0,78.5,80.0
+20201055,Matemáticas,82.5,81.0,83.5,84.0
+20201055,Ciencias,89.0,87.5,88.5,86.0
+20201055,Historia,74.0,72.5,75.0,73.5
+20201055,Lenguaje,90.0,91.5,89.0,92.5
+20201055,Geografía,80.5,82.0,81.5,83.0
+20201056,Matemáticas,79.0,81.5,83.0,80.5
+20201056,Ciencias,84.5,83.0,85.0,82.5
+20201056,Historia,72.0,70.5,73.5,74.0
+20201056,Lenguaje,87.5,86.0,88.5,89.0
+20201056,Geografía,78.5,80.0,81.5,79.0
+20201057,Matemáticas,81.0,83.5,85.0,82.5
+20201057,Ciencias,87.0,85.5,88.0,86.5
+20201057,Historia,75.0,76.5,77.0,74.5
+20201057,Lenguaje,91.5,90.0,93.0,92.5
+20201057,Geografía,81.0,79.5,82.5,80.0
+20201058,Matemáticas,78.5,80.0,82.5,81.0
+20201058,Ciencias,85.0,83.5,86.0,84.5
+20201058,Historia,71.5,73.0,74.0,72.5
+20201058,Lenguaje,89.5,88.0,90.0,91.5
+20201058,Geografía,80.5,82.0,79.5,81.0
+20201059,Matemáticas,82.5,81.0,84.5,83.0
+20201059,Ciencias,88.0,86.5,89.0,87.5
+20201059,Historia,74.0,72.5,75.5,76.0
+20201059,Lenguaje,90.0,91.5,92.0,89.5
+20201059,Geografía,81.5,80.0,83.0,82.5
+20201060,Matemáticas,79.0,77.5,81.0,80.5
+20201060,Ciencias,84.5,83.0,85.5,82.0
+20201060,Historia,72.5,71.0,74.0,73.5
+20201060,Lenguaje,87.5,86.0,89.0,90.5
+20201060,Geografía,80.0,81.5,79.0,78.5
+20201061,Matemáticas,80.5,82.0,84.5,83.0
+20201061,Ciencias,87.0,85.5,88.0,86.5
+20201061,Historia,75.0,73.5,76.0,74.5
+20201061,Lenguaje,91.0,89.5,92.0,90.5
+20201061,Geografía,80.0,82.5,81.0,79.5
+20201062,Matemáticas,78.0,80.5,82.0,81.5
+20201062,Ciencias,84.5,83.0,85.5,84.0
+20201062,Historia,73.0,71.5,74.0,72.5
+20201062,Lenguaje,88.5,87.0,89.5,90.0
+20201062,Geografía,79.5,81.0,78.5,80.0
+20201063,Matemáticas,82.5,81.0,83.5,84.0
+20201063,Ciencias,89.0,87.5,88.5,86.0
+20201063,Historia,74.0,72.5,75.0,73.5
+20201063,Lenguaje,90.0,91.5,89.0,92.5
+20201063,Geografía,80.5,82.0,81.5,83.0
+20201064,Matemáticas,79.0,81.5,83.0,80.5
+20201064,Ciencias,84.5,83.0,85.0,82.5
+20201064,Historia,72.0,70.5,73.5,74.0
+20201064,Lenguaje,87.5,86.0,88.5,89.0
+20201064,Geografía,78.5,80.0,81.5,79.0
+20201065,Matemáticas,81.0,83.5,85.0,82.5
+20201065,Ciencias,87.0,85.5,88.0,86.5
+20201065,Historia,75.0,76.5,77.0,74.5
+20201065,Lenguaje,91.5,90.0,93.0,92.5
+20201065,Geografía,81.0,79.5,82.5,80.0
+20201066,Matemáticas,78.5,80.0,82.5,81.0
+20201066,Ciencias,85.0,83.5,86.0,84.5
+20201066,Historia,71.5,73.0,74.0,72.5
+20201066,Lenguaje,89.5,88.0,90.0,91.5
+20201066,Geografía,80.5,82.0,79.5,81.0
+20201067,Matemáticas,82.5,81.0,84.5,83.0
+20201067,Ciencias,88.0,86.5,89.0,87.5
+20201067,Historia,74.0,72.5,75.5,76.0
+20201067,Lenguaje,90.0,91.5,92.0,89.5
+20201067,Geografía,81.5,80.0,83.0,82.5
+20201068,Matemáticas,79.0,77.5,81.0,80.5
+20201068,Ciencias,84.5,83.0,85.5,82.0
+20201068,Historia,72.5,71.0,74.0,73.5
+20201068,Lenguaje,87.5,86.0,89.0,90.5
+20201068,Geografía,80.0,81.5,79.0,78.5
+20201069,Matemáticas,80.5,82.0,84.5,83.0
+20201069,Ciencias,87.0,85.5,88.0,86.5
+20201069,Historia,75.0,73.5,76.0,74.5
+20201069,Lenguaje,91.0,89.5,92.0,90.5
+20201069,Geografía,80.0,82.5,81.0,79.5
+20201070,Matemáticas,78.0,80.5,82.0,81.5
+20201070,Ciencias,84.5,83.0,85.5,84.0
+20201070,Historia,73.0,71.5,74.0,72.5
+20201070,Lenguaje,88.5,87.0,89.5,90.0
+20201070,Geografía,79.5,81.0,78.5,80.0
+20201071,Matemáticas,82.5,81.0,83.5,84.0
+20201071,Ciencias,89.0,87.5,88.5,86.0
+20201071,Historia,74.0,72.5,75.0,73.5
+20201071,Lenguaje,90.0,91.5,89.0,92.5
+20201071,Geografía,80.5,82.0,81.5,83.0
+20201072,Matemáticas,79.0,81.5,83.0,80.5
+20201072,Ciencias,84.5,83.0,85.0,82.5
+20201072,Historia,72.0,70.5,73.5,74.0
+20201072,Lenguaje,87.5,86.0,88.5,89.0
+20201072,Geografía,78.5,80.0,81.5,79.0
+20201073,Matemáticas,81.0,83.5,85.0,82.5
+20201073,Ciencias,87.0,85.5,88.0,86.5
+20201073,Historia,75.0,76.5,77.0,74.5
+20201073,Lenguaje,91.5,90.0,93.0,92.5
+20201073,Geografía,81.0,79.5,82.5,80.0
+20201074,Matemáticas,78.5,80.0,82.5,81.0
+20201074,Ciencias,85.0,83.5,86.0,84.5
+20201074,Historia,71.5,73.0,74.0,72.5
+20201074,Lenguaje,89.5,88.0,90.0,91.5
+20201074,Geografía,80.5,82.0,79.5,81.0
+20201075,Matemáticas,82.5,81.0,84.5,83.0
+20201075,Ciencias,88.0,86.5,89.0,87.5
+20201075,Historia,74.0,72.5,75.5,76.0
+20201075,Lenguaje,90.0,91.5,92.0,89.5
+20201075,Geografía,81.5,80.0,83.0,82.5
+20201076,Matemáticas,80.0,82.5,85.0,83.5
+20201076,Ciencias,87.5,85.0,88.5,86.0
+20201076,Historia,74.5,76.0,75.5,73.0
+20201076,Lenguaje,91.0,90.5,92.5,93.0
+20201076,Geografía,82.0,81.5,80.0,78.5
+20201077,Matemáticas,78.5,80.0,83.5,81.0
+20201077,Ciencias,85.0,83.5,86.5,84.0
+20201077,Historia,72.0,71.5,74.5,75.0
+20201077,Lenguaje,89.5,88.0,90.5,92.0
+20201077,Geografía,80.5,82.0,79.5,81.0
+20201078,Matemáticas,81.5,83.0,84.0,82.5
+20201078,Ciencias,88.0,86.5,89.0,87.5
+20201078,Historia,75.0,73.5,76.0,74.5
+20201078,Lenguaje,91.0,89.5,92.0,90.5
+20201078,Geografía,80.0,82.5,81.0,79.5
+20201079,Matemáticas,79.0,77.5,81.5,80.0
+20201079,Ciencias,84.5,83.0,85.5,82.0
+20201079,Historia,72.5,71.0,74.0,73.5
+20201079,Lenguaje,87.5,86.0,89.0,90.5
+20201079,Geografía,80.0,81.5,79.0,78.5
