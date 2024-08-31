@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class jpMejoresAlumnos extends javax.swing.JPanel {
 
     private MainMenu mainMenu;
+    private List<Estudiante> ListEstudiantes;
     List<Calificacion> Listcalificaiones;
     List<Calificacion> top5Matematicas;
     List<Calificacion> top5Ciencias;
@@ -31,12 +32,13 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
     /**
      * Creates new form jpMejoresAlumnos
      */
-    public jpMejoresAlumnos(MainMenu mainM, List<Calificacion> calificaiones) {
+    public jpMejoresAlumnos(MainMenu mainM, List<Calificacion> calificaiones, List<Estudiante> estudiantes) {
         initComponents();
         
         mainMenu = mainM;
         
         Listcalificaiones = calificaiones;
+        ListEstudiantes = estudiantes;
         top5Matematicas = obtenerTop5PorMateria(Listcalificaiones, "Matemáticas");
         top5Ciencias = obtenerTop5PorMateria(Listcalificaiones, "Ciencias");
         top5Historia = obtenerTop5PorMateria(Listcalificaiones, "Historia");
@@ -62,12 +64,21 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
     }
     
     private void addRows(List<Calificacion> calificaciones){
-        String[] columnas = {"Carnet", "Materia", "Nota 1", "Nota 2", "Nota 3", "Nota 4", "Promedio"};
-       
+        String[] columnas = {"Carnet", "Nombre", "Materia", "Nota 1", "Nota 2", "Nota 3", "Nota 4", "Promedio"};
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
         
-        for(Calificacion calif : calificaciones ){
-            Object[] fila = {calif.getCarnet(), calif.getMateria(), calif.getNote1(), calif.getNote2(), calif.getNote3(), calif.getNote4()};
+        for(Calificacion calif : calificaciones ){        
+            String nombreEstudiante = "";
+        
+            // Buscamos en la lista de estudiantes el que coincida con el carnet
+            for(Estudiante est : ListEstudiantes){
+                if(est.getCarne().equals(calif.getCarnet())){
+                    nombreEstudiante = est.getName()+ " " + est.getLastName();
+                    break; // Encontramos el estudiante, podemos salir del loop
+                }
+            }
+        
+            Object[] fila = {calif.getCarnet(), nombreEstudiante, calif.getMateria(), calif.getNote1(), calif.getNote2(), calif.getNote3(), calif.getNote4()};
             modelo.addRow(fila);
         }  
         jTable1.setModel(modelo);
@@ -88,6 +99,7 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -121,6 +133,10 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("TOP 5 ALUMNOS");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -129,12 +145,20 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(30, 30, 30))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,11 +166,13 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
 
@@ -185,9 +211,20 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
             
         for (Calificacion califc : calificaciones) {
            if (califc.getMateria().equalsIgnoreCase(materiaselect)) {
+               
+               String nombreEstudiante = "";
+        
+            // Buscamos en la lista de estudiantes el que coincida con el carnet
+            for(Estudiante est : ListEstudiantes){
+                if(est.getCarne().equals(califc.getCarnet())){
+                    nombreEstudiante = est.getName()+ " " + est.getLastName();
+                    break; // Encontramos el estudiante, podemos salir del loop
+                }
+            }
                // Crear un objeto con los datos del estudiante
                Object[] fila = {
                    califc.getCarnet(),
+                   nombreEstudiante,
                    califc.getMateria(),
                    califc.getNote1(),
                    califc.getNote2(),
@@ -207,6 +244,7 @@ public class jpMejoresAlumnos extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
