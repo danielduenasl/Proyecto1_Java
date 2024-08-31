@@ -239,6 +239,9 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jpBarHeader.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpBarHeaderMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jpBarHeaderMousePressed(evt);
             }
@@ -378,6 +381,18 @@ public class MainMenu extends javax.swing.JFrame {
     private void jpBarHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBarHeaderMouseDragged
         this.setLocation(evt.getXOnScreen() - getX, evt.getYOnScreen() - getY);
     }//GEN-LAST:event_jpBarHeaderMouseDragged
+
+    private void jpBarHeaderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpBarHeaderMouseClicked
+        if (evt.getClickCount()== 2){
+
+        if(this.getExtendedState()!= MainMenu.MAXIMIZED_BOTH){
+                  this.setExtendedState(MainMenu.MAXIMIZED_BOTH);
+                }
+                else{
+                    this.setExtendedState(MainMenu.NORMAL);
+            }
+        }
+    }//GEN-LAST:event_jpBarHeaderMouseClicked
 
     /**
      * @param args the command line arguments
